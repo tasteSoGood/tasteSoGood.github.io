@@ -517,7 +517,7 @@ article {
   padding: 8rem 0;
 }
 article a {
-  color: #f03838;
+  color: #87a5c5;
 }
 article:not(:first-child):before {
   content: '';
@@ -533,7 +533,7 @@ article blockquote {
   margin: 6rem 2rem;
   padding-left: 15px;
   line-height: 2rem;
-  border-left: 4px solid #f03838;
+  border-left: 4px solid #87a5c5;
 }
 article .article-title {
   position: relative;
@@ -574,7 +574,7 @@ article .article-top-meta a {
   color: #9e9e9e;
 }
 article .article-top-meta a:hover {
-  color: #f03838;
+  color: #87a5c5;
 }
 article .article-top-meta a time {
   font-style: italic;
@@ -629,7 +629,7 @@ article .article-footer .article-meta a {
   color: #9e9e9e;
 }
 article .article-footer .article-meta a:hover {
-  color: #f03838;
+  color: #87a5c5;
 }
 article .article-footer .article-meta i {
   vertical-align: middle;
@@ -647,9 +647,10 @@ article code {
   padding: 2px 4px;
   margin-left: 2px;
   margin-right: 2px;
-  color: #c7254e;
+  color: #555;
   white-space: normal;
   border-radius: 0;
+  background-color: #eee;
 }
 article p {
   margin: 2rem 0;
@@ -786,7 +787,7 @@ article .tags-cloud a {
 }
 article .archive-tags a:hover,
 article .tags-cloud a:hover {
-  color: #f03838;
+  color: #87a5c5;
 }
 article .archive-tags i,
 article .tags-cloud i {
@@ -846,7 +847,7 @@ article .categories-cloud a {
 }
 article .archive-categories a:hover,
 article .categories-cloud a:hover {
-  color: #f03838;
+  color: #87a5c5;
 }
 article .archive-categories i,
 article .categories-cloud i {
