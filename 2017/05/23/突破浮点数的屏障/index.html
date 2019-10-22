@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>突破浮点数的屏障 | 玩味者 | 玩味者的理性空间</title>
+
+  
+
+  
+  <meta name="description" content="当计算机程序遇到数值计算时候，随着浮点运算次数的不断增加，会很容易出现数字精度丢失的问题。这个问题是由计算机本身结构导致的，它会带来如下的一些令人费解的结果：">
+  
+
+  
+  
+  <meta name="keywords" content="计算机科学">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="突破浮点数的屏障"/>
+
+  <meta property="og:site_name" content="玩味者"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="玩味者" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">玩味者</a>
+    </h1>
+    <p class="site-description">玩味者的理性空间</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="../../../../index.html">主页</a></li>
+      
+        <li><a href="../../../../archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>突破浮点数的屏障</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/23/突破浮点数的屏障/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-22T16:00:00.000Z">
+          2017-05-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous"><p>&#x5F53;&#x8BA1;&#x7B97;&#x673A;&#x7A0B;&#x5E8F;&#x9047;&#x5230;&#x6570;&#x503C;&#x8BA1;&#x7B97;&#x65F6;&#x5019;&#xFF0C;&#x968F;&#x7740;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x6B21;&#x6570;&#x7684;&#x4E0D;&#x65AD;&#x589E;&#x52A0;&#xFF0C;&#x4F1A;&#x5F88;&#x5BB9;&#x6613;&#x51FA;&#x73B0;&#x6570;&#x5B57;&#x7CBE;&#x5EA6;&#x4E22;&#x5931;&#x7684;&#x95EE;&#x9898;&#x3002;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#x7531;&#x8BA1;&#x7B97;&#x673A;&#x672C;&#x8EAB;&#x7ED3;&#x6784;&#x5BFC;&#x81F4;&#x7684;&#xFF0C;&#x5B83;&#x4F1A;&#x5E26;&#x6765;&#x5982;&#x4E0B;&#x7684;&#x4E00;&#x4E9B;&#x4EE4;&#x4EBA;&#x8D39;&#x89E3;&#x7684;&#x7ED3;&#x679C;&#xFF1A;</p>
+<img src="/2017/05/23/%E7%AA%81%E7%A0%B4%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%B1%8F%E9%9A%9C/052301.png" class>
+<a id="more"></a>
+<p>&#x4E0A;&#x9762;&#x7684;&#x8BA1;&#x7B97;&#x662F;&#x57FA;&#x4E8E;<code>JavaScript</code>&#x7684;&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x4EBA;&#x4F1A;&#x8BF4;&#x4E86;&#xFF0C;<code>Js</code>&#x7684;&#x6BDB;&#x75C5;&#x90A3;&#x4E48;&#x591A;&#xFF0C;&#x51FA;&#x8FD9;&#x6837;&#x7684;&#x9519;&#x8BEF;&#x80AF;&#x5B9A;&#x7684;&#x3002;&#x597D;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x4EE5;&#x6570;&#x503C;&#x8BA1;&#x7B97;&#x8457;&#x79F0;&#x7684;<code>Matlab</code>&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x8868;&#x73B0;</p>
+<img src="/2017/05/23/%E7%AA%81%E7%A0%B4%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%B1%8F%E9%9A%9C/052302.png" class>
+<p>&#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x8BA1;&#x7B97;&#x4E86;&#x4E00;&#x4E2A;&#x77E9;&#x9635;&#x7684;&#x884C;&#x5217;&#x5F0F;&#x7684;&#x503C;&#x3002;&#x6309;&#x884C;&#x5C55;&#x5F00;&#xFF0C;&#x8FD9;&#x4E2A;&#x884C;&#x5217;&#x5F0F;&#x7684;&#x503C;&#x5E94;&#x8BE5;&#x4E3A;</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>det</mi><mo>&#x2061;</mo><mrow><mo fence="true">(</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>2</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>3</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>4</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>5</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>6</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>7</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>8</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>9</mn></mstyle></mtd></mtr></mtable><mo fence="true">)</mo></mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>1</mn><mo>&#xD7;</mo><mo stretchy="false">(</mo><mn>5</mn><mo>&#xD7;</mo><mn>9</mn><mo>&#x2212;</mo><mn>6</mn><mo>&#xD7;</mo><mn>8</mn><mo stretchy="false">)</mo><mo>&#x2212;</mo><mn>2</mn><mo>&#xD7;</mo><mo stretchy="false">(</mo><mn>4</mn><mo>&#xD7;</mo><mn>9</mn><mo>&#x2212;</mo><mn>6</mn><mo>&#xD7;</mo><mn>7</mn><mo stretchy="false">)</mo><mo>+</mo><mn>3</mn><mo>&#xD7;</mo><mo stretchy="false">(</mo><mn>4</mn><mo>&#xD7;</mo><mn>8</mn><mo>&#x2212;</mo><mn>5</mn><mo>&#xD7;</mo><mn>7</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>0</mn></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\det\begin{pmatrix}
+1&amp;2&amp;3\\
+4&amp;5&amp;6\\
+7&amp;8&amp;9
+\end{pmatrix}&amp;=1\times (5\times 9-6\times 8)-2\times (4\times 9-6\times 7)+3\times (4\times 8-5\times 7)\\
+&amp;=0
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:5.40004em;vertical-align:-2.4500200000000003em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.9500199999999994em;"><span style="top:-4.950019999999999em;"><span class="pstrut" style="height:4.05002em;"></span><span class="mord"><span class="mop">det</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05002em;"><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>&#x239D;</span></span></span><span style="top:-4.05002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>&#x239B;</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.55002em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">7</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">5</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">8</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">6</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">9</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05002em;"><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>&#x23A0;</span></span></span><span style="top:-4.05002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>&#x239E;</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:1.55002em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:4.05002em;"></span><span class="mord"></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:2.4500200000000003em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.9500199999999994em;"><span style="top:-4.950019999999999em;"><span class="pstrut" style="height:4.05002em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">8</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">7</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">7</span><span class="mclose">)</span></span></span><span style="top:-2.26em;"><span class="pstrut" style="height:4.05002em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">0</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:2.4500200000000003em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>&#x800C;<code>Matlab</code>&#x7ED9;&#x51FA;&#x7684;&#x7B54;&#x6848;&#x662F;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6.6613</mn><mo>&#xD7;</mo><mn>1</mn><msup><mn>0</mn><mrow><mo>&#x2212;</mo><mn>16</mn></mrow></msup></mrow><annotation encoding="application/x-tex">6.6613\times10^{-16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mord">.</span><span class="mord">6</span><span class="mord">6</span><span class="mord">1</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2212;</span><span class="mord mtight">1</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span>&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x5C0F;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x662F;0&#x3002;&#x81F3;&#x4E8E;&#x4E3A;&#x4EC0;&#x4E48;&#x8F6F;&#x4EF6;&#x7ED9;&#x51FA;&#x7684;&#x7B54;&#x6848;&#x4F1A;&#x5B58;&#x5728;&#x8FD9;&#x6837;&#x7684;&#x7CBE;&#x5EA6;&#x4E27;&#x5931;&#xFF0C;&#x662F;&#x4E0E;&#x5B83;&#x6C42;&#x884C;&#x5217;&#x5F0F;&#x7684;&#x7B97;&#x6CD5;&#x6709;&#x5173;&#x7684;&#xFF0C;&#x5BF9;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x4ECB;&#x7ECD;&#x5DF2;&#x7ECF;&#x8D85;&#x51FA;&#x4E86;&#x672C;&#x6587;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x6211;&#x4EEC;&#x4EE5;&#x540E;&#x518D;&#x8BF4;&#x3002;</p>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8BEF;&#x5DEE;&#x662F;&#x666E;&#x904D;&#x5B58;&#x5728;&#x7684;&#xFF0C;&#x5C31;&#x50CF;&#x65E0;&#x5904;&#x4E0D;&#x5728;&#x7684;&#x610F;&#x9762;&#x5927;&#x795E;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x907F;&#x514D;&#x6D6E;&#x70B9;&#x8BEF;&#x5DEE;&#xFF0C;&#x53EA;&#x80FD;&#x7ED5;&#x9053;&#x800C;&#x884C;&#x3002;</p>
+
+<h2 id="&#x89E3;&#x51B3;&#x529E;&#x6CD5;">&#x89E3;&#x51B3;&#x529E;&#x6CD5;</h2>
+<p>&#x6211;&#x4EEC;&#x8981;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x5148;&#x4E86;&#x89E3;&#x5230;&#x8BEF;&#x5DEE;&#x7684;&#x6765;&#x6E90;&#x3002;&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x4E24;&#x4E2A;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x5927;&#x6982;&#x660E;&#x767D;&#xFF0C;&#x6D6E;&#x70B9;&#x7CBE;&#x5EA6;&#x7684;&#x4E27;&#x5931;&#x548C;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#x6709;&#x5173;&#xFF1A;</p>
+<ul>
+<li>&#x6570;&#x636E;&#x7684;&#x5B58;&#x50A8;&#x4F4D;&#x6570;&#x662F;&#x6709;&#x9650;&#x5236;&#x7684;</li>
+<li>&#x6570;&#x636E;&#x4E4B;&#x95F4;&#x505A;&#x9664;&#x6CD5;&#x8FD0;&#x7B97;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5E26;&#x6765;&#x8BEF;&#x5DEE;</li>
+</ul>
+<p>&#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x66FF;&#x4EE3;&#x7684;&#x65B9;&#x6848;&#x3002;&#x5BF9;&#x7B2C;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x7ECF;&#x5E38;&#x505A;&#x7B97;&#x6CD5;&#x7EC3;&#x4E60;&#x7684;&#x670B;&#x53CB;&#x5E94;&#x8BE5;&#x4E0D;&#x4F1A;&#x964C;&#x751F;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x5927;&#x6574;&#x6570;&#x7C7B;&#x7684;&#x8FD0;&#x7B97;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x5B58;&#x50A8;&#x4F4D;&#x6570;&#x7684;&#x9650;&#x5236;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x5B57;&#x7B26;&#x6765;&#x4EE3;&#x66FF;&#x6570;&#x5B57;&#xFF0C;&#x6A21;&#x62DF;&#x6574;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x8FD0;&#x7B97;&#xFF0C;&#x540C;&#x6837;&#x4E5F;&#x53EF;&#x4EE5;&#x5C01;&#x88C5;&#x5404;&#x79CD;&#x7B97;&#x6CD5;&#x7684;&#x4F18;&#x5316;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x5728;&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x4E0A;&#xFF0C;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x6548;&#x7387;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x94FE;&#x8868;&#x6765;&#x6A21;&#x62DF;&#x6574;&#x6570;&#x8FD0;&#x7B97;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x4E0B;&#xFF0C;&#x7406;&#x8BBA;&#x4E0A;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x65E0;&#x7A77;&#x5927;&#x4F4D;&#x6570;&#x7684;&#x6574;&#x6570;&#x3002;</p>
+<p>&#x7B2C;&#x4E8C;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x8BA9;&#x4E24;&#x4E2A;&#x6574;&#x6570;&#x76F8;&#x9664;&#x7684;&#x8BDD;&#xFF0C;&#x7ED3;&#x679C;&#x5C31;&#x53EA;&#x662F;&#x56DE;&#x5230;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x7CBE;&#x5EA6;&#x95EE;&#x9898;&#x5E76;&#x6CA1;&#x6709;&#x89E3;&#x51B3;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8DF3;&#x51FA;&#x8BA1;&#x7B97;&#x673A;&#x9886;&#x57DF;&#xFF0C;&#x6765;&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#x6D6E;&#x70B9;&#x6570;&#x63CF;&#x8FF0;&#x7684;&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#x3002;</p>
+<h3 id="&#x6D6E;&#x70B9;&#x6570;&#x6709;&#x7406;&#x6570;">&#x6D6E;&#x70B9;&#x6570;&#xFF1F;&#x6709;&#x7406;&#x6570;&#xFF1F;</h3>
+<p>&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x6D6E;&#x70B9;&#x6570;&#x5E94;&#x8BE5;&#x662F;&#x6709;&#x7406;&#x6570;&#x7684;&#x4E00;&#x79CD;&#x8FD1;&#x4F3C;&#x3002;&#x6211;&#x4EEC;&#x8BF4;&#x662F;&#x8FD1;&#x4F3C;&#xFF0C;&#x56E0;&#x4E3A;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684;&#x6709;&#x7406;&#x6570;&#x90FD;&#x80FD;&#x88AB;&#x8BA1;&#x7B97;&#x673A;&#x7CBE;&#x786E;&#x5730;&#x5B58;&#x50A8;&#x3002;</p>
+<blockquote>
+<p>&#x6709;&#x4E24;&#x4E2A;&#x6574;&#x6570; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> &#x548C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>&#xFF0C;&#x6211;&#x4EEC;&#x5B9A;&#x4E49; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mi>a</mi><mi>b</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\dfrac{a}{b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.7935600000000003em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.10756em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">b</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">a</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> &#x4E3A;&#x4E00;&#x4E2A;&#x6709;&#x7406;&#x6570;&#x3002;</p>
+</blockquote>
+<p>&#x554A;&#x54C8;&#xFF0C;&#x4E0A;&#x9762;&#x5173;&#x4E8E;&#x6709;&#x7406;&#x6570;&#x7684;&#x6570;&#x5B66;&#x5B9A;&#x4E49;&#x6B63;&#x597D;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x5411;&#x3002;&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x5206;&#x5F0F;&#xFF0C;&#x662F;&#x5B8C;&#x5B8C;&#x5168;&#x5168;&#x7CBE;&#x786E;&#x5730;&#x63CF;&#x8FF0;&#x4E86;&#x4E00;&#x4E2A;&#x6709;&#x7406;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x662F;&#x4E0D;&#x662F;&#x53EF;&#x4EE5;&#x7528;&#x4E24;&#x4E2A;&#x6574;&#x6570;&#x6765;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x201C;&#x65B0;&#x6D6E;&#x70B9;&#x6570;&#x201D;&#x5462;&#xFF1F;</p>
+<p>&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x5173;&#x4E8E;&#x7B2C;&#x4E8C;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x2014;&#x2014;&#x5206;&#x6570;&#x7C7B;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x4E3B;&#x9898;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x5185;&#x5BB9;&#x6211;&#x4EEC;&#x7559;&#x5230;<a href="/2017/05/28/%E5%88%86%E6%95%B0%E7%B1%BB/" title="&#x4E0B;&#x6B21;">&#x4E0B;&#x6B21;</a>&#x518D;&#x8BF4;&#x3002;</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/计算机科学/">计算机科学</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <!-- <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 玩味者
+    
+  </p> -->
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
