@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>1133. Splitting A Linked List (25) | 玩味者 | 玩味者的理性空间</title>
+
+  
+
+  
+  <meta name="description" content="Splitting A Linked List (25)
+这道题的大致思路和昨天提到的一样，但仔细想想，哈希是多余的。
+总共对原链表遍历了四遍，如果是需要时间限制的话，可能还需要想更好的方法才行
+需要注意的是，静态链表没有环路，但不代表没有断链的情况，所以最初给的N值是不能在后面使用的。">
+  
+
+  
+  
+  <meta name="keywords" content="PAT,OJ">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="1133. Splitting A Linked List (25)"/>
+
+  <meta property="og:site_name" content="玩味者"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="玩味者" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">玩味者</a>
+    </h1>
+    <p class="site-description">玩味者的理性空间</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="../../../../index.html">主页</a></li>
+      
+        <li><a href="../../../../archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>1133. Splitting A Linked List (25)</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/09/18/1133-Splitting-A-Linked-List-25/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-09-18T04:46:57.000Z">
+          2017-09-18
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><a href="https://www.patest.cn/contests/pat-a-practise/1133" target="_blank" rel="noopener">Splitting A Linked List (25)</a></p>
+<p>&#x8FD9;&#x9053;&#x9898;&#x7684;&#x5927;&#x81F4;&#x601D;&#x8DEF;&#x548C;&#x6628;&#x5929;&#x63D0;&#x5230;&#x7684;&#x4E00;&#x6837;&#xFF0C;&#x4F46;&#x4ED4;&#x7EC6;&#x60F3;&#x60F3;&#xFF0C;&#x54C8;&#x5E0C;&#x662F;&#x591A;&#x4F59;&#x7684;&#x3002;</p>
+<p>&#x603B;&#x5171;&#x5BF9;&#x539F;&#x94FE;&#x8868;&#x904D;&#x5386;&#x4E86;&#x56DB;&#x904D;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x9700;&#x8981;&#x65F6;&#x95F4;&#x9650;&#x5236;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x80FD;&#x8FD8;&#x9700;&#x8981;&#x60F3;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x624D;&#x884C;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x9759;&#x6001;&#x94FE;&#x8868;&#x6CA1;&#x6709;&#x73AF;&#x8DEF;&#xFF0C;&#x4F46;&#x4E0D;&#x4EE3;&#x8868;&#x6CA1;&#x6709;&#x65AD;&#x94FE;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x521D;&#x7ED9;&#x7684;N&#x503C;&#x662F;&#x4E0D;&#x80FD;&#x5728;&#x540E;&#x9762;&#x4F7F;&#x7528;&#x7684;&#x3002;</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> {</span> <span class="keyword">int</span> key, id; };</span><br><span class="line">node one[<span class="number">100001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">int</span> start, N, K;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d&quot;</span>, &amp;start, &amp;N, &amp;K);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++){</span><br><span class="line">        <span class="keyword">int</span> a, b, c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d&quot;</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">        one[a] = { b, c };</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">vector</span>&lt;node&gt; two, three;</span><br><span class="line">    <span class="keyword">for</span>(; start != <span class="number">-1</span>; start = one[start].id)</span><br><span class="line">        two.push_back({one[start].key, start});</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it : two)</span><br><span class="line">        <span class="keyword">if</span>(it.key &lt; <span class="number">0</span>)</span><br><span class="line">            three.push_back(it);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it : two)</span><br><span class="line">        <span class="keyword">if</span>(it.key &gt;= <span class="number">0</span>)</span><br><span class="line">            three.push_back(it);</span><br><span class="line">    two.clear();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it : three)</span><br><span class="line">        <span class="keyword">if</span>(it.key &lt;= K)</span><br><span class="line">            two.push_back(it);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it : three)</span><br><span class="line">        <span class="keyword">if</span>(it.key &gt; K)</span><br><span class="line">            two.push_back(it);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; two.size() - <span class="number">1</span>; i++)<span class="comment">//&#x8FD9;&#x91CC;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;n&#xFF0C;&#x56E0;&#x4E3A;&#x9759;&#x6001;&#x94FE;&#x8868;&#x4E5F;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x65AD;&#x94FE;&#x7684;&#x60C5;&#x51B5;</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%05d %d %05d\n&quot;</span>, two[i].id, two[i].key, two[i + <span class="number">1</span>].id);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%05d %d -1\n&quot;</span>, two[two.size() - <span class="number">1</span>].id, two[two.size() - <span class="number">1</span>].key);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/PAT/">PAT</a><a href="/tags/OJ/">OJ</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <!-- <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 玩味者
+    
+  </p> -->
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

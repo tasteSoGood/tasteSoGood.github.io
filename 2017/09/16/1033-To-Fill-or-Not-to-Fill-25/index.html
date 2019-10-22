@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>1033. To Fill or Not to Fill (25) | 玩味者 | 玩味者的理性空间</title>
+
+  
+
+  
+  <meta name="description" content="With highways available, driving a car from Hangzhou to any other city is easy. But since the tank capacity of a car is limited, we have to find gas stations on the way from time to time. Different gas station may give different price. You are asked to carefully design the cheapest route to go.
+Input Specification:
+Each input file contains one test case. For each case, the first line contains 4 positive numbers: Cmax (&amp;lt;= 100), the maximum capacity of the tank; D (&amp;lt;=30000), the distance between Hangzhou and the destination city; Davg (&amp;lt;=20), the average distance per unit gas that the car can run; and N (&amp;lt;= 500), the total number of gas stations. Then N lines follow, each contains a pair of non-negative numbers: Pi, the unit gas price, and Di (&amp;lt;=D), the distance between this station and Hangzhou, for i=1,...N. All the numbers in a line are separated by a space.">
+  
+
+  
+  
+  <meta name="keywords" content="PAT,OJ">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="1033. To Fill or Not to Fill (25)"/>
+
+  <meta property="og:site_name" content="玩味者"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="玩味者" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">玩味者</a>
+    </h1>
+    <p class="site-description">玩味者的理性空间</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="../../../../index.html">主页</a></li>
+      
+        <li><a href="../../../../archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>1033. To Fill or Not to Fill (25)</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/09/16/1033-To-Fill-or-Not-to-Fill-25/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-09-16T13:50:01.000Z">
+          2017-09-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>With highways available, driving a car from Hangzhou to any other city is easy. But since the tank capacity of a car is limited, we have to find gas stations on the way from time to time. Different gas station may give different price. You are asked to carefully design the cheapest route to go.</p>
+<h4 id="input-specification">Input Specification:</h4>
+<p>Each input file contains one test case. For each case, the first line contains 4 positive numbers: Cmax (&lt;= 100), the maximum capacity of the tank; D (&lt;=30000), the distance between Hangzhou and the destination city; Davg (&lt;=20), the average distance per unit gas that the car can run; and N (&lt;= 500), the total number of gas stations. Then N lines follow, each contains a pair of non-negative numbers: Pi, the unit gas price, and Di (&lt;=D), the distance between this station and Hangzhou, for i=1,...N. All the numbers in a line are separated by a space.</p>
+<a id="more"></a>
+<h4 id="output-specification">Output Specification:</h4>
+<p>For each test case, print the cheapest price in a line, accurate up to 2 decimal places. It is assumed that the tank is empty at the beginning. If it is impossible to reach the destination, print &quot;The maximum travel distance = X&quot; where X is the maximum possible distance the car can run, accurate up to 2 decimal places.</p>
+<h5 id="sample-input-1">Sample Input 1:</h5>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">50</span> <span class="number">1300</span> <span class="number">12</span> <span class="number">8</span></span><br><span class="line"><span class="number">6.00</span> <span class="number">1250</span></span><br><span class="line"><span class="number">7.00</span> <span class="number">600</span></span><br><span class="line"><span class="number">7.00</span> <span class="number">150</span></span><br><span class="line"><span class="number">7.10</span> <span class="number">0</span></span><br><span class="line"><span class="number">7.20</span> <span class="number">200</span></span><br><span class="line"><span class="number">7.50</span> <span class="number">400</span></span><br><span class="line"><span class="number">7.30</span> <span class="number">1000</span></span><br><span class="line"><span class="number">6.85</span> <span class="number">300</span></span><br></pre></td></tr></table></figure>
+<h5 id="sample-output-1">Sample Output 1:</h5>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">749.17</span></span><br></pre></td></tr></table></figure>
+<h5 id="sample-input-2">Sample Input 2:</h5>
+<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">50 </span><span class="number">1300</span> <span class="number">12</span> <span class="number">2</span></span><br><span class="line"><span class="number">7.10</span> <span class="number">0</span></span><br><span class="line"><span class="number">7.00</span> <span class="number">600</span></span><br></pre></td></tr></table></figure>
+<h5 id="sample-output-2">Sample Output 2:</h5>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">The maximum travel distance = <span class="number">1200.00</span></span><br></pre></td></tr></table></figure>
+<h3 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h3>
+<p>&#x8FD9;&#x662F;PAT&#x7532;&#x7EA7;&#x8003;&#x8BD5;&#x7684;&#x4E00;&#x9053;&#x6A21;&#x62DF;&#x9898;&#xFF0C;&#x4E3B;&#x8981;&#x7684;&#x601D;&#x60F3;&#x4E3A;&#x8D2A;&#x5FC3;&#x7B97;&#x6CD5;&#x3002;</p>
+<p>&#x5927;&#x6982;&#x7684;&#x610F;&#x601D;&#x5C31;&#x662F;&#xFF0C;&#x5728;&#x4E00;&#x6761;&#x516C;&#x8DEF;&#x4E0A;&#x5F00;&#x8F66;&#xFF0C;&#x8DEF;&#x4E0A;&#x6709;&#x8BB8;&#x591A;&#x52A0;&#x6CB9;&#x7AD9;&#xFF0C;&#x5206;&#x522B;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x8DDD;&#x79BB;&#x548C;&#x4E0D;&#x540C;&#x7684;&#x6CB9;&#x4EF7;&#xFF0C;&#x8F66;&#x7684;&#x6CB9;&#x7BB1;&#x6709;&#x9650;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x7684;&#x6700;&#x5C11;&#x82B1;&#x8D39;&#x662F;&#x591A;&#x5C11;&#x3002;&#x4E0B;&#x9762;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E1C;&#x897F;&#x5C31;&#x5F88;&#x591A;&#x4E86;&#xFF0C;&#x5B9E;&#x9645;&#x5199;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x76F8;&#x5F53;&#x75DB;&#x82E6;&#xFF0C;&#x8D2A;&#x5FC3;&#x7B97;&#x6CD5;&#x8FD8;&#x8981;&#x591A;&#x591A;&#x7EC3;&#x4E60;&#x2026;&#x2026;</p>
+<ul>
+<li>&#x5728;&#x52A0;&#x6CB9;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6BCF;&#x6B21;&#x4EE5;&#x5F53;&#x524D;&#x52A0;&#x6CB9;&#x7AD9;&#x4E3A;&#x57FA;&#x7840;&#xFF0C;&#x5411;&#x540E;&#x641C;&#x7D22;
+<ul>
+<li>&#x641C;&#x7D22;&#x7684;&#x8303;&#x56F4;&#x662F;&#x4ECE;&#x4E0B;&#x4E00;&#x4E2A;&#x52A0;&#x6CB9;&#x7AD9;&#x5230;&#x53EF;&#x80FD;&#x5230;&#x8FBE;&#x7684;&#x6700;&#x5927;&#x8DDD;&#x79BB;&#xFF0C;&#x8FD9;&#x4E2A;&#x8DDD;&#x79BB;&#x4E5F;&#x5C31;&#x662F; <code>C_max * D_avg</code></li>
+<li>&#x641C;&#x7D22;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x4E00;&#x4E2A;&#x52A0;&#x6CB9;&#x7AD9;&#x7684;&#x6CB9;&#x4EF7;&#x6BD4;&#x5F53;&#x524D;&#x6CB9;&#x4EF7;&#x4F4E;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#xFF08;&#x76F4;&#x63A5;&#x9000;&#x51FA;&#x641C;&#x7D22;&#xFF0C;&#x8D2A;&#x5FC3;&#x7684;&#x601D;&#x60F3;&#xFF09;&#x5728;&#x5F53;&#x524D;&#x52A0;&#x6CB9;&#x7AD9;&#x52A0;&#x5230;&#x4EC5;&#x4EC5;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;&#x90A3;&#x4E2A;&#x4F4E;&#x4EF7;&#x7AD9;&#x7684;&#x6CB9;&#xFF08;&#x6709;&#x70B9;&#x590D;&#x6742;&#xFF09;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x6700;&#x5C11;&#x5730;&#x4F7F;&#x7528;&#x9AD8;&#x4EF7;&#x6CB9;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x641C;&#x7D22;&#x5B8C;&#xFF0C;&#x90FD;&#x6CA1;&#x6709;&#x5F53;&#x524D;&#x7684;&#x6CB9;&#x4EF7;&#x4F4E;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5728;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x4E0B;&#x52A0;&#x6EE1;&#x6CB9;&#xFF08;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x6CB9;&#x4EF7;&#x662F;&#x5F53;&#x524D;&#x60C5;&#x51B5;&#x4E0B;&#x6700;&#x4F4E;&#x7684;&#x6CB9;&#x4EF7;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x8F6C;&#x5230;&#x90A3;&#x4E2A;<strong>&#x8F83;</strong>&#x4F4E;&#x6CB9;&#x4EF7;&#x7684;&#x7AD9;</li>
+<li>&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8F66;&#x5728;&#x884C;&#x9A76;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x6CB9;&#x7AD9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6CB9;&#x7BB1;&#x4F1A;&#x6D88;&#x8017;&#x6CB9;&#xFF0C;&#x6240;&#x4EE5;&#x6CB9;&#x7BB1;&#x53EF;&#x80FD;&#x6CA1;&#x6CB9;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x5269;&#x4E86;&#x4E00;&#x4E9B;&#x6CB9;&#xFF0C;&#x8FD9;&#x4E2A;&#x9700;&#x8981;&#x7B97;&#x7684;</li>
+<li>&#x5728;&#x8FD9;&#x4E2A;&#x603B;&#x5FAA;&#x73AF;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5FC5;&#x987B;&#x65F6;&#x523B;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x6761;&#x4EF6;&#x662F;&#x4E0D;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x5C31;&#x76F4;&#x63A5;&#x9000;&#x51FA;</li>
+<li>&#x9000;&#x51FA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8981;&#x8BB0;&#x5F97;&#x603B;&#x4EF7;&#x8FD8;&#x8981;&#x518D;&#x52A0;&#x4E0A;&#x90A3;&#x6BB5;&#x8DDD;&#x79BB;&#x9020;&#x6210;&#x7684;&#x5DEE;&#x4EF7;</li>
+<li>&#x5982;&#x679C;&#x662F;&#x65E0;&#x6CD5;&#x5230;&#x8FBE;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x540E;&#x7684;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E5F;&#x8981;&#x52A0;&#x4E0A;&#x5F53;&#x524D;&#x6761;&#x4EF6;&#x4E0B;&#x6700;&#x5927;&#x7684;&#x53EF;&#x80FD;&#x8DDD;&#x79BB;</li>
+<li>&#x7B2C;&#x56DB;&#x4E2A;&#x6D4B;&#x8BD5;&#x70B9;&#x4E00;&#x76F4;&#x8FC7;&#x4E0D;&#x4E86;&#x2026;&#x2026;</li>
+</ul></li>
+</ul>
+<h3 id="&#x4EE3;&#x7801;">&#x4EE3;&#x7801;&#xFF01;</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> {</span> <span class="keyword">double</span> price, dist; };</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a, node b)</span> </span>{ <span class="keyword">return</span> a.dist &lt; b.dist; }</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">double</span> C_max, D, D_avg;</span><br><span class="line">    <span class="keyword">int</span> N;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lf %lf %lf %d&quot;</span>, &amp;C_max, &amp;D, &amp;D_avg, &amp;N);</span><br><span class="line">    <span class="built_in">vector</span>&lt;node&gt; sta(N);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lf %lf&quot;</span>, &amp;sta[i].price, &amp;sta[i].dist);</span><br><span class="line">    sort(sta.begin(), sta.end(), cmp);</span><br><span class="line">    <span class="keyword">if</span>(sta[<span class="number">0</span>].dist != <span class="number">0.0</span>){</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;The maximum travel distance = 0.00&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">double</span> total_price = <span class="number">0.0</span>, total_dist = <span class="number">0.0</span>, now_price = sta[<span class="number">0</span>].price, tank = <span class="number">0.0</span>;</span><br><span class="line">    <span class="keyword">int</span> now_sta = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(total_dist &lt; D){</span><br><span class="line">        <span class="keyword">double</span> cheapest = <span class="number">100000000.0</span>;</span><br><span class="line">        <span class="keyword">int</span> pos = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = now_sta + <span class="number">1</span>; i &lt; sta.size() &amp;&amp; sta[i].dist - total_dist &lt;= C_max * D_avg; i++)</span><br><span class="line">            <span class="keyword">if</span>(sta[i].price &lt; cheapest){</span><br><span class="line">                cheapest = sta[i].price, pos = i;</span><br><span class="line">                <span class="keyword">if</span>(cheapest &lt; now_price)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">        <span class="keyword">if</span>(pos == <span class="number">-1</span> &amp;&amp; C_max * D_avg &lt; D - total_dist){</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;The maximum travel distance = %.2lf&quot;</span>, total_dist + C_max * D_avg);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pos == <span class="number">-1</span> &amp;&amp; C_max * D_avg &gt;= D - total_dist){</span><br><span class="line">            total_price = total_price + ((D - total_dist) / D_avg - tank) * now_price;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(cheapest &lt; now_price){</span><br><span class="line">            total_price = total_price + ((sta[pos].dist - total_dist) / D_avg - tank) * now_price;</span><br><span class="line">            tank = <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span>{</span><br><span class="line">            total_price = total_price + (C_max - tank) * now_price;</span><br><span class="line">            tank = C_max - (sta[pos].dist - total_dist) / D_avg;</span><br><span class="line">        }</span><br><span class="line">        total_dist = sta[pos].dist;</span><br><span class="line">        now_price = cheapest;</span><br><span class="line">        now_sta = pos;</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.2lf&quot;</span>, total_price);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x60F3;&#x770B;&#x5176;&#x4ED6;PAT&#x7532;&#x7EA7;&#x9898;&#x89E3;&#x7684;&#x670B;&#x53CB;&#xFF0C;&#x53EF;&#x4EE5;&#x6233;&#x6211;&#x7684;github&#x9879;&#x76EE;</p>
+<p><a href="https://github.com/tasteSoGood/PAT_code" target="_blank" rel="noopener">PAT_code</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/PAT/">PAT</a><a href="/tags/OJ/">OJ</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <!-- <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 玩味者
+    
+  </p> -->
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python中的修饰器 | 玩味者 | 玩味者的理性空间</title>
+
+  
+
+  
+  <meta name="description" content="修饰器是对函数的一种修饰，如果将函数实体视作句子的主语的话，那么修饰器扮演着定语的成分。比如在面向对象程序设计中的@property和@classmethod就是内置的修饰器。下面我们来实现一个修饰器@positive_result，被它所修饰的函数只能返回正数，否则就会抛出AssertionError错误">
+  
+
+  
+  
+  <meta name="keywords" content="Python">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Python中的修饰器"/>
+
+  <meta property="og:site_name" content="玩味者"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="玩味者" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">玩味者</a>
+    </h1>
+    <p class="site-description">玩味者的理性空间</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="../../../../index.html">主页</a></li>
+      
+        <li><a href="../../../../archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Python中的修饰器</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/08/22/Python中的修饰器/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-08-22T15:18:45.000Z">
+          2018-08-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous"><p>&#x4FEE;&#x9970;&#x5668;&#x662F;&#x5BF9;&#x51FD;&#x6570;&#x7684;&#x4E00;&#x79CD;&#x4FEE;&#x9970;&#xFF0C;&#x5982;&#x679C;&#x5C06;&#x51FD;&#x6570;&#x5B9E;&#x4F53;&#x89C6;&#x4F5C;&#x53E5;&#x5B50;&#x7684;&#x4E3B;&#x8BED;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x4FEE;&#x9970;&#x5668;&#x626E;&#x6F14;&#x7740;&#x5B9A;&#x8BED;&#x7684;&#x6210;&#x5206;&#x3002;&#x6BD4;&#x5982;&#x5728;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x4E2D;&#x7684;<code>@property</code>&#x548C;<code>@classmethod</code>&#x5C31;&#x662F;&#x5185;&#x7F6E;&#x7684;&#x4FEE;&#x9970;&#x5668;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x4FEE;&#x9970;&#x5668;<code>@positive_result</code>&#xFF0C;&#x88AB;&#x5B83;&#x6240;&#x4FEE;&#x9970;&#x7684;&#x51FD;&#x6570;&#x53EA;&#x80FD;&#x8FD4;&#x56DE;&#x6B63;&#x6570;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x4F1A;&#x629B;&#x51FA;<code>AssertionError</code>&#x9519;&#x8BEF;</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">positive_result</span><span class="params">(function)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        result = function(*args, **kwargs)</span><br><span class="line">        <span class="keyword">assert</span> result &gt;= <span class="number">0</span>, function.__name__ + <span class="string">&quot;() result isn&apos;t &gt;= 0&quot;</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    wrapper.__name__ = function.__name__</span><br><span class="line">    wrapper.__doc__ = function.__doc__</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@positive_result</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">func(<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="comment">---------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">AssertionError                            Traceback (most recent <span class="keyword">call</span> last)</span><br><span class="line"></span><br><span class="line">&lt;ipython-<span class="keyword">input</span><span class="number">-53</span><span class="number">-35</span>bff33987a5&gt; <span class="keyword">in</span> &lt;module&gt;()</span><br><span class="line">     <span class="number">12</span>     <span class="keyword">return</span> n</span><br><span class="line">     <span class="number">13</span> </span><br><span class="line"><span class="comment">---&gt; 14 func(-1)</span></span><br><span class="line"></span><br><span class="line">&lt;ipython-<span class="keyword">input</span><span class="number">-53</span><span class="number">-35</span>bff33987a5&gt; <span class="keyword">in</span> <span class="keyword">wrapper</span>(*args, **kwargs)</span><br><span class="line">      <span class="number">2</span>     def <span class="keyword">wrapper</span>(*args, **kwargs):</span><br><span class="line">      <span class="number">3</span>         result = <span class="keyword">function</span>(*args, **kwargs)</span><br><span class="line"><span class="comment">----&gt; 4         assert result &gt;= 0, function.__name__ + &quot;() result isn&apos;t &gt;= 0&quot;</span></span><br><span class="line">      <span class="number">5</span>         <span class="keyword">return</span> result</span><br><span class="line">      <span class="number">6</span>     <span class="keyword">wrapper</span>.__name__ = <span class="keyword">function</span>.__name__</span><br><span class="line">      </span><br><span class="line"> AssertionError: func() result isn<span class="string">&apos;t &gt;= 0</span></span><br></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x9762;&#x8FD9;&#x6837;&#x7684;&#x4FEE;&#x9970;&#x5668;&#x8BED;&#x6CD5;&#x5176;&#x5B9E;&#x76F8;&#x5F53;&#x4E8E;</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">func = positive_result(func)</span><br></pre></td></tr></table></figure>
+<p>&#x6240;&#x4EE5;&#x4ECE;&#x672C;&#x8D28;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x4FEE;&#x9970;&#x5668;&#x5C31;&#x662F;&#x4E00;&#x4E2A;<strong>&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;</strong>&#x3002;</p>
+<blockquote>
+<p>&#x5728;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x8303;&#x7574;&#x91CC;&#xFF0C;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#x79F0;&#x4E3A;<strong>&#x9AD8;&#x9636;&#x51FD;&#x6570;</strong></p>
+</blockquote>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x8FD9;&#x79CD;&#x4FEE;&#x9970;&#x5668;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x628A;<code>wrapper</code>&#x51FD;&#x6570;&#x7684;<code>__name__</code>&#x548C;<code>__doc__</code>&#x6210;&#x5458;&#x90FD;&#x53D8;&#x6210;&#x4E86;&#x8F93;&#x5165;&#x51FD;&#x6570;&#x7684;&#x6210;&#x5458;&#xFF0C;&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#x6709;&#x52A9;&#x4E8E;&#x5185;&#x7701;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x4E2D;&#x5F15;&#x7528;&#x539F;&#x59CB;&#x51FD;&#x6570;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x800C;&#x975E;<code>wrapper</code>&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x8868;&#x8FF0;&#x4E3A;&#xFF1A;<strong>&#x7ECF;&#x8FC7;&#x4FEE;&#x9970;&#x5668;&#x4FEE;&#x9970;&#x4E4B;&#x540E;&#x7684;&#x51FD;&#x6570;&#x7684;&#x540D;&#x79F0;&#x548C;&#x539F;&#x59CB;&#x51FD;&#x6570;&#x4E00;&#x81F4;</strong>&#x3002;&#x4E3A;&#x4E86;&#x8FBE;&#x5230;&#x8FD9;&#x4E2A;&#x76EE;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">positive_result</span><span class="params">(function)</span>:</span></span><br><span class="line"><span class="meta">    @functools.wraps(function)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        result = function(*args, **kwargs)</span><br><span class="line">        <span class="keyword">assert</span> result &gt;= <span class="number">0</span>, function.__name__ + <span class="string">&quot;() result isn&apos;t &gt;= 0&quot;</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x662F;&#x5728;&#x4FEE;&#x9970;&#x5668;&#x91CC;&#x9762;&#x518D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x975E;&#x5E38;<del>&#x95F2;&#x5F97;&#x4E00;&#x6BD4;</del>&#x4F18;&#x96C5;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x66F4;&#x52A0;<del>&#x95F2;&#x5F97;&#x4E00;&#x6BD4;</del>&#x4E25;&#x8C28;&#x5730;&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x6765;&#xFF1A;&#x4FEE;&#x9970;&#x5668;&#x80FD;&#x4E0D;&#x80FD;&#x52A0;&#x53C2;&#x6570;&#x5462;&#xFF1F;</p>
+<p>&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#xFF0C;&#x4FEE;&#x9970;&#x5668;&#x672C;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;<strong>&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;</strong>&#xFF0C;&#x4E8E;&#x662F;&#xFF0C;&#x53EF;&#x4EE5;&#x52A0;&#x53C2;&#x6570;&#x7684;&#x4FEE;&#x9970;&#x5668;&#x672C;&#x8D28;&#x4E0A;&#x5E94;&#x8BE5;&#x662F;<strong>&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;</strong>&#xFF08;&#x6211;&#x7684;&#x5929;&#x2026;&#x2026;&#xFF09;&#xFF0C;&#x5199;&#x6210;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x5927;&#x6982;&#x957F;&#x8FD9;&#x6837;&#xFF1A;</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">func(arg1, arg2, ..., argn)(function)</span><br></pre></td></tr></table></figure>
+<p>&#x4E0B;&#x9762;&#x5C31;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x8FD9;&#x79CD;&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x88AB;&#x4FEE;&#x9970;&#x7684;&#x51FD;&#x6570;&#x5C06;&#x53EA;&#x80FD;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x6570;&#x503C;&#x8303;&#x56F4;&#x7684;&#x7ED3;&#x679C;</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bound</span><span class="params">(minimum, maximum)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(function)</span>:</span></span><br><span class="line"><span class="meta">        @functools.wraps(function)</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">            result = function(*args, **kwargs)</span><br><span class="line">            <span class="keyword">if</span> result &lt; minimum:</span><br><span class="line">                <span class="keyword">return</span> minimum</span><br><span class="line">            <span class="keyword">elif</span> result &gt; maximum:</span><br><span class="line">                <span class="keyword">return</span> maximum</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">@bound(0, 100)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line"></span><br><span class="line">func(<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>&#x5728;&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x4FEE;&#x9970;&#x5668;&#x7684;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#xFF0C;&#x5B9E;&#x73B0;&#x5BF9;&#x9012;&#x5F52;&#x51FD;&#x6570;&#x7684;&#x6548;&#x7387;&#x63D0;&#x5347;&#x3002;</p>
+<p>&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#x7684;&#x9012;&#x5F52;&#x5B9E;&#x73B0;&#x662F;&#x6309;&#x7167;&#x5B83;&#x7684;&#x6570;&#x5B66;&#x5B9A;&#x4E49;&#x6765;&#x7684;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x51FA;&#x4E86;&#x540D;&#x7684;&#x6548;&#x7387;&#x6781;&#x5DEE;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x8FBE;&#x5230;&#x4E86;&#x60CA;&#x4EBA;&#x7684;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mi>n</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span> <span class="keyword">or</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>&#x4F60;&#x7EDD;&#x4E0D;&#x8981;&#x5C1D;&#x8BD5;&#x53BB;&#x8BA1;&#x7B97;<code>fib(100)</code>&#xFF0C;&#x56E0;&#x4E3A;&#x8981;&#x7B97;&#x4E0A;&#x534A;&#x5929;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5229;&#x7528;&#x4FEE;&#x9970;&#x5668;&#x6765;&#x5C06;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x964D;&#x4F4E;&#xFF0C;&#x4E0D;&#x8FC7;&#x7EC8;&#x5F52;&#x8FD9;&#x8FD8;&#x662F;&#x4E00;&#x4E2A;&#x9012;&#x5F52;&#x51FD;&#x6570;&#xFF0C;&#x4F1A;&#x53D7;&#x5230;&#x9012;&#x5F52;&#x6808;&#x6DF1;&#x5EA6;&#x7684;&#x9650;&#x5236;&#x3002;</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(function)</span>:</span></span><br><span class="line">    cache = {}</span><br><span class="line"><span class="meta">    @functools.wraps(function)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> args <span class="keyword">not</span> <span class="keyword">in</span> cache:</span><br><span class="line">            cache[args] = function(*args)</span><br><span class="line">        <span class="keyword">return</span> cache[args]</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span> <span class="keyword">or</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">fib(<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="number">354224848179261915075</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Python/">Python</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <!-- <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 玩味者
+    
+  </p> -->
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
