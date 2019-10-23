@@ -8,10 +8,11 @@
   
 
   
-  <meta name="description" content="&amp;#x672C;&amp;#x6587;&amp;#x53C2;&amp;#x8003;&amp;#xFF1A;&amp;#x7F51;&amp;#x5740;
+  <meta name="description" content="本文参考：网址
 
-&amp;#x6211;&amp;#x4EEC;&amp;#x6765;&amp;#x770B;&amp;#x8FD9;&amp;#x6837;&amp;#x4E00;&amp;#x4E2A;&amp;#x4F8B;&amp;#x5B50;
-a = np.a">
+我们来看这样一个例子
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+要将a中的所有偶数都变成0，应该如何做到呢？">
   
 
   
@@ -90,6 +91,7 @@ a = np.a">
 <p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure>
 <p>&#x8981;&#x5C06;<code>a</code>&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5076;&#x6570;&#x90FD;&#x53D8;&#x6210;<code>0</code>&#xFF0C;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x505A;&#x5230;&#x5462;&#xFF1F;</p>
+<a id="more"></a>
 <p>&#x8FD9;&#x91CC;&#x7684;&#x601D;&#x8DEF;&#x662F;&#xFF1A;&#x5229;&#x7528;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5F97;&#x5230;&#x5176;&#x4E2D;&#x6240;&#x6709;&#x5076;&#x6570;&#x7684;&#x4E0B;&#x6807;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x4E0B;&#x6807;&#x6765;&#x627E;&#x5230;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x8D4B;&#x503C;</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a[a % <span class="number">2</span> == <span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
 <p>&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6240;&#x6709;&#x7684;&#x5076;&#x6570;&#x90FD;&#x53D8;&#x6210;&#x4E86;<code>0</code>&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
