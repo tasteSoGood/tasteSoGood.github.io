@@ -3,19 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>玩味者 | 玩味者的理性空间</title>
+  <title>爱，死亡和机器人 | 玩味者 | 玩味者的理性空间</title>
 
   
 
   
+  <meta name="description" content="&amp;#x6700;&amp;#x8FD1;&amp;#xFF0C;&amp;#x300A;&amp;#x7231;&amp;#xFF0C;&amp;#x6B7B;&amp;#x4EA1;&amp;#x548C;&amp;#x673A;&amp;#x5668;&amp;#x4EBA;&amp;#xFF08;Love, Death &amp;amp; Robot&amp;#xFF09;&amp;#x300B;&amp;#x5F88">
+  
 
+  
+  
+  <meta name="keywords" content="电影">
   
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="爱，死亡和机器人"/>
 
   <meta property="og:site_name" content="玩味者"/>
 
@@ -43,244 +48,20 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="index.html">主页</a></li>
+        <li><a href="../../../../index.html">主页</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="../../../../archives">归档</a></li>
       
     </ul>
   </nav>
 </header>
 
     <main class="site-main posts-loop">
-    
-  <article>
+    <article>
 
   
     
-    <h3 class="article-title"><a href="/2019/10/16/Numpy中多维数组对象的切片/"><span>Numpy中多维数组对象的切片</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/10/16/Numpy中多维数组对象的切片/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-10-15T16:00:00.000Z">
-          2019-10-16
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>本文参考：<a href="https://docs.scipy.org/doc/numpy/user/basics.indexing.html" target="_blank" rel="noopener">网址</a></p>
-</blockquote>
-<p>我们来看这样一个例子</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure>
-<p>要将<code>a</code>中的所有偶数都变成<code>0</code>，应该如何做到呢？</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a><a href="/tags/Numpy/">Numpy</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/23/list中的extend方法/"><span>list中的extend方法</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/23/list中的extend方法/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-22T16:00:00.000Z">
-          2019-09-23
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>在Python里的<code>list</code>对象是很基本的对象，本文将介绍它的一个不那么常见的方法，<code>extend</code></p>
-<p><code>extend</code>方法接受一个可迭代的对象，然后将这个迭代对象转化成列表加入到本身的末尾，下面我们举几个例子来说明这种方法在某些时候对问题的简化</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/19/NotImplementedError错误的使用/"><span>NotImplementedError错误的使用</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/19/NotImplementedError错误的使用/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-18T16:00:00.000Z">
-          2019-09-19
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>在Python中内置有一些错误，在编程的时候可以使用它们，让编程的安全性得到提高。本文我们先介绍一种类型的错误，<code>NotImplementedError</code></p>
-<p>在面向对象编程的时候，如果父类中有一些方法本身不需要实现，但是每一个继承它的子类都需要实现这个接口，比如说有个“动物”类，有一个“进食”的方法，那么“动物”类的这个方法可以不需要实现出来，因为自然界中有那么多中动物，进食方式千奇百怪。而对于“动物”类的某一个实现，比如“狗”类，它的进食方式就需要实现，不然就要饿死。</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a><a href="/tags/面向对象/">面向对象</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/08/05/Floyd环检测算法/"><span>Floyd环检测算法</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/08/05/Floyd环检测算法/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-08-04T16:00:00.000Z">
-          2019-08-05
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="问题提出">问题提出</h2>
-<p>有一个这样的问题：</p>
-<blockquote>
-<p>单链表可能具有环：也就是单链表的最后一个节点的末尾指向单链表的某一个其他节点。给出一个单链表，试判断它是否存在环。</p>
-</blockquote>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/算法/">算法</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/04/03/爱，死亡和机器人/"><span>爱，死亡和机器人</span></a></h3>
+    <h3 class="article-title"><span>爱，死亡和机器人</span></h3>
     
   
 
@@ -384,290 +165,13 @@
   </div>
 </article>
 
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2018/08/22/Python中的修饰器/"><span>Python中的修饰器</span></a></h3>
-    
   
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/08/22/Python中的修饰器/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-08-22T15:18:45.000Z">
-          2018-08-22
-        </time>
-      </a>
-    </span>
-  </div>
 
 
-  
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>修饰器是对函数的一种修饰，如果将函数实体视作句子的主语的话，那么修饰器扮演着定语的成分。比如在面向对象程序设计中的<code>@property</code>和<code>@classmethod</code>就是内置的修饰器。下面我们来实现一个修饰器<code>@positive_result</code>，被它所修饰的函数只能返回正数，否则就会抛出<code>AssertionError</code>错误</p>
-        
-      
-    </div>
 
-  </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2018/07/29/圆上的格点/"><span>圆上的格点</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/07/29/圆上的格点/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-07-28T16:00:00.000Z">
-          2018-07-29
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>今天咱们来讨论一道数学题：</p>
-<blockquote>
-<p>在直角坐标系中给定一个圆心在原点的圆，那么圆周经过的格点有多少个？</p>
-</blockquote>
-<p>这里的格点就是整数坐标，比如<code>(0, 0)</code>，<code>(4, 5)</code>等等。画个图可以看到，半径为1的圆将经过4个格点，半径为<span class="math inline">\sqrt{5}</span>的圆将经过8个格点</p>
-<img src="/2018/07/29/%E5%9C%86%E4%B8%8A%E7%9A%84%E6%A0%BC%E7%82%B9/1.png" class="">
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/数学/">数学</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2018/04/13/记python中的一个小特性/"><span>记python中的一个小特性</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/04/13/记python中的一个小特性/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-04-13T04:24:06.000Z">
-          2018-04-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>从今年三月份开始，github上传项目需要添加一个凭证，结果把之前所有博客的图片都丢失了……现在没闲工夫把那些图片补齐，就暂且先吊着这个bug吧。</p>
-<p>我们先来看一下这样几行代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">1</span>]: x = <span class="string">'hello'</span></span><br><span class="line">In [<span class="number">2</span>]: y = <span class="string">'hello'</span></span><br><span class="line">In [<span class="number">3</span>]: x == y</span><br><span class="line">Out[<span class="number">3</span>]: <span class="literal">True</span></span><br><span class="line">In [<span class="number">4</span>]: x <span class="keyword">is</span> y</span><br><span class="line">Out[<span class="number">4</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<p>以上的代码并没有很稀奇，可是下面的呢？</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2018/02/23/在Linux-Deploy下的Ubuntu安装MySql的坑/"><span>在Linux Deploy下的Ubuntu安装MySql的坑</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/02/23/在Linux-Deploy下的Ubuntu安装MySql的坑/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-02-23T14:55:02.000Z">
-          2018-02-23
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>这几天在自己的一个旧的安卓手机上用Linux Deploy装了一个Ubuntu，装各种软件都很方便，也可以满足日常开发的各种需要了。可偏偏在装MySql的时候，死活没办法启动：</p>
-<figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">root@localhost:/home/android# mysql</span><br><span class="line"><span class="keyword">ERROR </span>2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)</span><br></pre></td></tr></table></figure>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Linux/">Linux</a><a href="/tags/Debug/">Debug</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2018/02/13/仿3Blue1Brown关于傅里叶变换的一种观点/"><span>仿3Blue1Brown关于傅里叶变换的一种观点</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/02/13/仿3Blue1Brown关于傅里叶变换的一种观点/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-02-13T11:49:52.000Z">
-          2018-02-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p><a href="http://www.3blue1brown.com/" target="_blank" rel="noopener">3Blue1Brown</a>是一个非常好的数学博客，博主Grant毕业于斯坦福大学数学系，由于他本人是双色瞳（瞳孔颜色有蓝色和棕色），所以取了一个这样的名字。他非常善于用直观的动画和语言来讲述那些难以理解的数学概念，他本人有很深的计算机背景，整个动画制作也是使用他自己开发的Python动画包。在b站上有中文翻译团队翻译了他的很多视频，强烈推荐。</p>
-<p>在最新的一期视频中，他提到傅里叶变换的一种有趣的观点。我们知道，傅里叶变换的复变函数形式如下：</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/数学/">数学</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-
-<nav class="pagination">
-  
-  
-  <a href="/page/2/" class="pagination-next">下一页</a>
-  
-</nav>
     </main>
 
     <footer class="site-footer">
