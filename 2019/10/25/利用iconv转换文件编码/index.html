@@ -3,19 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>玩味者 | 玩味者的理性空间</title>
+  <title>利用iconv转换文件编码 | 玩味者 | 玩味者的理性空间</title>
 
   
 
   
+  <meta name="description" content="&amp;#x5728;Linux&amp;#x4E0B;&amp;#x81EA;&amp;#x5E26;&amp;#x4E00;&amp;#x4E2A;&amp;#x7F16;&amp;#x7801;&amp;#x8F6C;&amp;#x6362;&amp;#x7684;&amp;#x5DE5;&amp;#x5177;&amp;#xFF0C;&amp;#x53EB;iconv&amp;#xFF0C;&amp;#x4F7F;&amp;#x7">
+  
 
+  
+  
+  <meta name="keywords" content="Linux,编码转换">
   
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="利用iconv转换文件编码"/>
 
   <meta property="og:site_name" content="玩味者"/>
 
@@ -43,21 +48,20 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="index.html">主页</a></li>
+        <li><a href="../../../../index.html">主页</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="../../../../archives">归档</a></li>
       
     </ul>
   </nav>
 </header>
 
     <main class="site-main posts-loop">
-    
-  <article>
+    <article>
 
   
     
-    <h3 class="article-title"><a href="/2019/10/25/利用iconv转换文件编码/"><span>利用iconv转换文件编码</span></a></h3>
+    <h3 class="article-title"><span>利用iconv转换文件编码</span></h3>
     
   
 
@@ -125,516 +129,13 @@
   </div>
 </article>
 
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/10/16/Numpy中多维数组对象的切片/"><span>Numpy中多维数组对象的切片</span></a></h3>
-    
   
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/10/16/Numpy中多维数组对象的切片/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-10-15T16:00:00.000Z">
-          2019-10-16
-        </time>
-      </a>
-    </span>
-  </div>
 
 
-  
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>本文参考：<a href="https://docs.scipy.org/doc/numpy/user/basics.indexing.html" target="_blank" rel="noopener">网址</a></p>
-</blockquote>
-<p>我们来看这样一个例子</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure>
-<p>要将<code>a</code>中的所有偶数都变成<code>0</code>，应该如何做到呢？</p>
-        
-      
-    </div>
 
-  </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a><a href="/tags/Numpy/">Numpy</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/27/cut的使用方法/"><span>cut的使用方法</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/27/cut的使用方法/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-26T16:00:00.000Z">
-          2019-09-27
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>在Bash中有一个<code>cut</code>指令，可以用于对文件的每一行进行剪切，熟练掌握以后还是很有作用的。</p>
-<p>可能有人会觉得，<code>awk</code>不就已经是按行处理文件的工具了吗，哪里还用得到别的？其实，<code>cut</code>可以用更加简洁的写法实现<code>awk</code>需要很长的语句或者逻辑才能完成的工作，而<code>awk</code>将自身拓展成了一个完整的脚本语言，可以应对更加复杂的文本情况，两者各有所长</p>
-<p>我们可以通过<code>man cut</code>来查看一下它的基本用法</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Linux/">Linux</a><a href="/tags/Bash/">Bash</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/23/list中的extend方法/"><span>list中的extend方法</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/23/list中的extend方法/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-22T16:00:00.000Z">
-          2019-09-23
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>在Python里的<code>list</code>对象是很基本的对象，本文将介绍它的一个不那么常见的方法，<code>extend</code></p>
-<p><code>extend</code>方法接受一个可迭代的对象，然后将这个迭代对象转化成列表加入到本身的末尾，下面我们举几个例子来说明这种方法在某些时候对问题的简化</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/19/NotImplementedError错误的使用/"><span>NotImplementedError错误的使用</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/19/NotImplementedError错误的使用/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-18T16:00:00.000Z">
-          2019-09-19
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>在Python中内置有一些错误，在编程的时候可以使用它们，让编程的安全性得到提高。本文我们先介绍一种类型的错误，<code>NotImplementedError</code></p>
-<p>在面向对象编程的时候，如果父类中有一些方法本身不需要实现，但是每一个继承它的子类都需要实现这个接口，比如说有个“动物”类，有一个“进食”的方法，那么“动物”类的这个方法可以不需要实现出来，因为自然界中有那么多中动物，进食方式千奇百怪。而对于“动物”类的某一个实现，比如“狗”类，它的进食方式就需要实现，不然就要饿死。</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a><a href="/tags/面向对象/">面向对象</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/08/05/Floyd环检测算法/"><span>Floyd环检测算法</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/08/05/Floyd环检测算法/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-08-04T16:00:00.000Z">
-          2019-08-05
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="问题提出">问题提出</h2>
-<p>有一个这样的问题：</p>
-<blockquote>
-<p>单链表可能具有环：也就是单链表的最后一个节点的末尾指向单链表的某一个其他节点。给出一个单链表，试判断它是否存在环。</p>
-</blockquote>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/算法/">算法</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/07/04/Linux中的下载工具/"><span>Linux中的下载工具</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/07/04/Linux中的下载工具/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-07-03T16:00:00.000Z">
-          2019-07-04
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>下载是一门大学问</p>
-<p>不管是FTP协议传输，还是BT协议、磁力链接，下载方式从点对点到多对多，从依赖服务器的中心化下载方式到现在的去中心化，下载方式的改变深刻地影响着互联网的发展</p>
-<p>我们总说互联网不是法外之地，但是总有那么一群人，秉持着对绝对自由的向往，开发出无数带着不屈抗争的程序，它们活在二进制的世界中，没有实体，却比任何一个政权都要强大，没有人可以阻碍自由的火焰燃烧</p>
-<p>信息不死！</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Linux/">Linux</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/04/03/爱，死亡和机器人/"><span>爱，死亡和机器人</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/04/03/爱，死亡和机器人/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-04-02T16:00:00.000Z">
-          2019-04-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <img src="/2019/04/03/%E7%88%B1%EF%BC%8C%E6%AD%BB%E4%BA%A1%E5%92%8C%E6%9C%BA%E5%99%A8%E4%BA%BA/01.jpg" class="" title="Love, Death &amp; Robot">
-<p>最近，《爱，死亡和机器人（Love, Death &amp; Robot）》很多人看，我也跟风找来看了一下，感觉很好。</p>
-<p>这是一个短片系列，除了其中的一个短片《冰河世纪》中有真人出演以外，都是不同类型的动画。像海报里面写的，这是一个NSFW（Not Suitable For Work）类型的成人动画合集，其中有很多的暴力以及色情镜头。所以，它们在很多视频平台上可以看到，但是不完整。</p>
-<p>因为整个系列有18集，限于篇幅，下面只挑几部来聊一聊</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/电影/">电影</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2018/08/22/Python中的修饰器/"><span>Python中的修饰器</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/08/22/Python中的修饰器/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-08-22T15:18:45.000Z">
-          2018-08-22
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>修饰器是对函数的一种修饰，如果将函数实体视作句子的主语的话，那么修饰器扮演着定语的成分。比如在面向对象程序设计中的<code>@property</code>和<code>@classmethod</code>就是内置的修饰器。下面我们来实现一个修饰器<code>@positive_result</code>，被它所修饰的函数只能返回正数，否则就会抛出<code>AssertionError</code>错误</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2018/07/29/圆上的格点/"><span>圆上的格点</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/07/29/圆上的格点/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-07-28T16:00:00.000Z">
-          2018-07-29
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>今天咱们来讨论一道数学题：</p>
-<blockquote>
-<p>在直角坐标系中给定一个圆心在原点的圆，那么圆周经过的格点有多少个？</p>
-</blockquote>
-<p>这里的格点就是整数坐标，比如<code>(0, 0)</code>，<code>(4, 5)</code>等等。画个图可以看到，半径为1的圆将经过4个格点，半径为<span class="math inline">\sqrt{5}</span>的圆将经过8个格点</p>
-<img src="/2018/07/29/%E5%9C%86%E4%B8%8A%E7%9A%84%E6%A0%BC%E7%82%B9/1.png" class="">
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/数学/">数学</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-
-<nav class="pagination">
-  
-  
-  <a href="/page/2/" class="pagination-next">下一页</a>
-  
-</nav>
     </main>
 
     <footer class="site-footer">
