@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Bash处理带空格的文件 | 玩味者 | 玩味者的理性空间</title>
+
+  
+
+  
+  <meta name="description" content="在Linux中常常会遇到有带空格的文件名，在利用Shell处理这类文件的时候常常会出问题。下面是一个例子">
+  
+
+  
+  
+  <meta name="keywords" content="Linux">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Bash处理带空格的文件"/>
+
+  <meta property="og:site_name" content="玩味者"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="玩味者" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">玩味者</a>
+    </h1>
+    <p class="site-description">玩味者的理性空间</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="../../../../index.html">主页</a></li>
+      
+        <li><a href="../../../../archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Bash处理带空格的文件</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/25/Bash处理带空格的文件/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-24T16:00:00.000Z">
+          2019-10-25
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>&#x5728;Linux&#x4E2D;&#x5E38;&#x5E38;&#x4F1A;&#x9047;&#x5230;&#x6709;&#x5E26;&#x7A7A;&#x683C;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x5728;&#x5229;&#x7528;Shell&#x5904;&#x7406;&#x8FD9;&#x7C7B;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x5E38;&#x5E38;&#x4F1A;&#x51FA;&#x95EE;&#x9898;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;</p>
+<a id="more"></a>
+<p>&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x8BED;&#x53E5;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> `ls .`; <span class="keyword">do</span></span><br><span class="line">    wc -l <span class="variable">$file</span>;</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x7EDF;&#x8BA1;&#x8DEF;&#x5F84;&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x884C;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x540D;&#x5B57;&#x4E2D;&#x5E26;&#x6709;&#x7A7A;&#x683C;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#xFF0C;&#x56E0;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;&#x5FAA;&#x73AF;&#x4E0D;&#x662F;&#x6309;&#x7167;&#x884C;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x4EE5;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x5206;&#x9694;&#x7B26;<code>$IFS</code>&#x6765;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x5728;Bash&#x4E2D;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x4E3A;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$IFS</span>=<span class="string">&quot;\t\n&quot;</span></span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x6709;&#x6587;&#x4EF6;&#x540D;&#x4E2D;&#x542B;&#x6709;&#x7A7A;&#x683C;&#xFF0C;&#x90A3;&#x4E48;Bash&#x4F1A;&#x8BA4;&#x4E3A;&#x8FD9;&#x662F;&#x4E24;&#x4E2A;&#x5206;&#x5F00;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;</p>
+<p>&#x6240;&#x4EE5;&#x8BF4;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x662F;&#x9700;&#x8981;&#x5728;&#x811A;&#x672C;&#x4E2D;&#x66F4;&#x6362;<code>$IFS</code>&#x7684;&#x503C;&#xFF0C;&#x8BA9;Bash&#x4EE5;&#x884C;&#x4F5C;&#x4E3A;&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x5199;&#x6CD5;&#x662F;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SAVEIFS=<span class="variable">$IFS</span> <span class="comment"># &#x5148;&#x4FDD;&#x5B58;&#x539F;&#x6709;&#x7684;IFS</span></span><br><span class="line">IFS=$(<span class="built_in">echo</span> -en <span class="string">&quot;\n\b&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> `ls .`; <span class="keyword">do</span></span><br><span class="line">    wc -l <span class="variable">$file</span>;</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">IFS=<span class="variable">$SAVEIFS</span> <span class="comment"># &#x6062;&#x590D;&#x539F;&#x6709;&#x7684;IFS</span></span><br></pre></td></tr></table></figure>
+<p>&#x56E0;&#x4E3A;<code>$IFS</code>&#x662F;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x811A;&#x672C;&#x7F16;&#x5199;&#x7684;&#x65F6;&#x5019;&#x628A;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x6539;&#x53D8;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x9020;&#x6210;&#x610F;&#x60F3;&#x4E0D;&#x5230;&#x7684;&#x9519;&#x8BEF;&#x3002;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x4FDD;&#x5B58;<code>$IFS</code>&#x7684;&#x521D;&#x59CB;&#x503C;&#xFF0C;&#x5728;&#x811A;&#x672C;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#x518D;&#x628A;&#x5B83;&#x590D;&#x539F;</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Linux/">Linux</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <!-- <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 玩味者
+    
+  </p> -->
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
