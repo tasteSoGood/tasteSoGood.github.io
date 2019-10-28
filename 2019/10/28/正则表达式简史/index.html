@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>正则表达式简史 | 玩味者 | 玩味者的理性空间</title>
+
+  
+
+  
+  <meta name="description" content="在之前我们已经知道了，正则表达式存在着不同的写法。既然一个工具有多种规则，那么一定和它的历史发展有关。
+现代编程语言中，基本都支持正则表达式；而在Linux系统中，也有多种文本处理工具支持正则表达式，但它们的写法都各不相同。为了能清晰地认识到它们之间的区别，这里来正本清源一下，对正则表达式的历史做一个简单的回顾">
+  
+
+  
+  
+  <meta name="keywords" content="正则表达式">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="正则表达式简史"/>
+
+  <meta property="og:site_name" content="玩味者"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="玩味者" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">玩味者</a>
+    </h1>
+    <p class="site-description">玩味者的理性空间</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="../../../../index.html">主页</a></li>
+      
+        <li><a href="../../../../archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>正则表达式简史</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/10/28/正则表达式简史/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-10-28T11:01:49.000Z">
+          2019-10-28
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>&#x5728;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#x4E86;&#xFF0C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5B58;&#x5728;&#x7740;&#x4E0D;&#x540C;&#x7684;&#x5199;&#x6CD5;&#x3002;&#x65E2;&#x7136;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x6709;&#x591A;&#x79CD;&#x89C4;&#x5219;&#xFF0C;&#x90A3;&#x4E48;&#x4E00;&#x5B9A;&#x548C;&#x5B83;&#x7684;&#x5386;&#x53F2;&#x53D1;&#x5C55;&#x6709;&#x5173;&#x3002;</p>
+<p>&#x73B0;&#x4EE3;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x57FA;&#x672C;&#x90FD;&#x652F;&#x6301;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF1B;&#x800C;&#x5728;Linux&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x4E5F;&#x6709;&#x591A;&#x79CD;&#x6587;&#x672C;&#x5904;&#x7406;&#x5DE5;&#x5177;&#x652F;&#x6301;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x7684;&#x5199;&#x6CD5;&#x90FD;&#x5404;&#x4E0D;&#x76F8;&#x540C;&#x3002;&#x4E3A;&#x4E86;&#x80FD;&#x6E05;&#x6670;&#x5730;&#x8BA4;&#x8BC6;&#x5230;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x7684;&#x533A;&#x522B;&#xFF0C;&#x8FD9;&#x91CC;&#x6765;&#x6B63;&#x672C;&#x6E05;&#x6E90;&#x4E00;&#x4E0B;&#xFF0C;&#x5BF9;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5386;&#x53F2;&#x505A;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x56DE;&#x987E;</p>
+<a id="more"></a>
+<h2 id="&#x7F18;&#x8D77;">&#x7F18;&#x8D77;</h2>
+<p>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F; (Regular Expression)&#xFF0C;&#x6709;&#x65F6;&#x4F1A;&#x7B80;&#x5199;&#x4E3A;RegEx&#x6216;&#x8005;RegExp&#xFF0C;&#x8FD9;&#x4E2A;&#x6539;&#x53D8;&#x6700;&#x521D;&#x6765;&#x81EA;&#x4E8E;&#x7F8E;&#x56FD;&#x6570;&#x5B66;&#x5BB6;Stephen Col Kleene&#x5728;1950&#x5E74;&#x4EE3;&#x6240;&#x63D0;&#x51FA;&#x7684;<strong>&#x6B63;&#x5219;&#x8BED;&#x8A00;</strong>&#xFF0C;&#x5C5E;&#x4E8E;&#x5F62;&#x5F0F;&#x8BED;&#x8A00;&#x8303;&#x7574;&#x7684;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#x3002;&#x4E4B;&#x540E;&#x5B83;&#x88AB;&#x7528;&#x4E8E;UNIX&#x7CFB;&#x7EDF;&#x7684;&#x6587;&#x672C;&#x5904;&#x7406;&#x5DE5;&#x5177;&#x3002;&#x5230;&#x4E86;1980&#x5E74;&#x4EE3;&#xFF0C;&#x51FA;&#x73B0;&#x4E86;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x6D41;&#x6D3E;&#xFF0C;&#x5373;&#x7531;Perl&#x8BED;&#x8A00;&#x9996;&#x5148;&#x652F;&#x6301;&#x7684;PCRE&#x98CE;&#x683C;&#xFF0C;&#x548C;&#x5982;&#x4ECA;&#x5E7F;&#x6CDB;&#x5B58;&#x5728;&#x4E8E;&#x7C7B;UNIX&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;POSIX&#x98CE;&#x683C;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x6458;&#x81EA;Wikipedia</p>
+<blockquote>
+<p>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8D77;&#x6E90;&#x4E8E;1951&#x5E74;&#xFF0C;&#x5F53;&#x65F6;&#x6570;&#x5B66;&#x5BB6;Stephen Cole Kleene&#x4F7F;&#x7528;&#x5176;&#x79F0;&#x4E3A;&#x6B63;&#x5219;&#x96C6;&#x7684;&#x6570;&#x5B66;&#x7B26;&#x53F7;&#x63CF;&#x8FF0;&#x4E86;<strong>&#x6B63;&#x5219;&#x8BED;&#x8A00;</strong>&#x3002;&#x8FD9;&#x4E9B;&#x51FA;&#x73B0;&#x5728;<strong>&#x7406;&#x8BBA;&#x8BA1;&#x7B97;&#x673A;&#x79D1;&#x5B66;</strong>&#xFF0C;<strong>&#x81EA;&#x52A8;&#x673A;&#x7406;&#x8BBA;</strong>&#xFF08;&#x8BA1;&#x7B97;&#x6A21;&#x578B;&#xFF09;&#x4EE5;&#x53CA;<strong>&#x5F62;&#x5F0F;&#x8BED;&#x8A00;</strong>&#x7684;&#x63CF;&#x8FF0;&#x548C;&#x5206;&#x7C7B;&#x7684;&#x5B50;&#x9886;&#x57DF;&#x4E2D;&#x3002;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x7684;&#x5176;&#x4ED6;&#x65E9;&#x671F;&#x5B9E;&#x73B0;&#x5305;&#x62EC;SNOBOL&#x8BED;&#x8A00;&#xFF0C;&#x8BE5;&#x8BED;&#x8A00;&#x4E0D;&#x4F7F;&#x7528;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x5176;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x4ECE;1968&#x5E74;&#x5F00;&#x59CB;&#xFF0C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5728;&#x4E24;&#x79CD;&#x7528;&#x9014;&#x4E2D;&#x5F00;&#x59CB;&#x6D41;&#x884C;&#xFF1A;&#x5728;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#x4E2D;&#x8FDB;&#x884C;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x548C;&#x5728;&#x7F16;&#x8BD1;&#x5668;&#x4E2D;&#x8FDB;&#x884C;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x3002;&#x7A0B;&#x5E8F;&#x5F62;&#x5F0F;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x9996;&#x6B21;&#x51FA;&#x73B0;&#x662F;Ken Thompson&#x5728;&#x7F16;&#x8F91;&#x5668;QED&#x4E2D;&#x5C06;Kleene&#x7684;&#x7B26;&#x53F7;&#x6784;&#x5EFA;&#x4E3A;&#x5339;&#x914D;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6A21;&#x5F0F;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x3002;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x901F;&#x5EA6;&#xFF0C;Thompson&#x901A;&#x8FC7;&#x5373;&#x65F6;&#x7F16;&#x8BD1;(JIT)&#x5BF9;Compatible Time-Sharing System&#x4E0A;&#x7684;IBM 7094&#x4EE3;&#x7801;&#x5B9E;&#x65BD;&#x4E86;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5339;&#x914D;&#xFF0C;&#x8FD9;&#x662F;JIT&#x7F16;&#x8BD1;&#x7684;&#x91CD;&#x8981;&#x65E9;&#x671F;&#x793A;&#x4F8B;&#x3002;&#x540E;&#x6765;&#xFF0C;&#x4ED6;&#x5C06;&#x6B64;&#x529F;&#x80FD;&#x6DFB;&#x52A0;&#x5230;Unix&#x7F16;&#x8F91;&#x5668;<code>ed</code>&#x4E2D;&#xFF0C;&#x6700;&#x7EC8;&#x5BFC;&#x81F4;&#x4E86;&#x6D41;&#x884C;&#x7684;&#x641C;&#x7D22;&#x5DE5;&#x5177;<code>grep</code>&#x4F7F;&#x7528;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF08;<code>grep</code>&#x662F;&#x4ECE;<code>ed</code>&#x7F16;&#x8F91;&#x5668;&#x4E2D;&#x7528;&#x4E8E;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x641C;&#x7D22;&#x7684;&#x547D;&#x4EE4;&#x884D;&#x751F;&#x7684;&#x5355;&#x8BCD;&#xFF1A;<code>g/re/p</code>&#x8868;&#x793A;<strong>&#x5168;&#x5C40;&#x641C;&#x7D22;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x548C;&#x6253;&#x5370;&#x5339;&#x914D;&#x884C;</strong>&#x3002;&#x5728;&#x6C64;&#x666E;&#x68EE;&#xFF08;Thompson&#xFF09;&#x5F00;&#x53D1;QED&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x5305;&#x62EC;&#x9053;&#x683C;&#x62C9;&#x65AF;&#xB7;&#x7F57;&#x65AF;&#xFF08;Douglas T. Ross&#xFF09;&#x5728;&#x5185;&#x7684;&#x4E00;&#x7EC4;&#x7814;&#x7A76;&#x4EBA;&#x5458;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x79CD;&#x57FA;&#x4E8E;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x8BE5;&#x5DE5;&#x5177;&#x7528;&#x4E8E;&#x7F16;&#x8BD1;&#x5668;&#x8BBE;&#x8BA1;&#x4E2D;&#x7684;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x3002;</p>
+<p>&#x8FD9;&#x4E9B;&#x539F;&#x59CB;&#x5F62;&#x5F0F;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8BB8;&#x591A;&#x53D8;&#x4F53;&#x5728;1970&#x5E74;&#x4EE3;&#x8D1D;&#x5C14;&#x5B9E;&#x9A8C;&#x5BA4;&#x7684;Unix&#x7A0B;&#x5E8F;&#x4E2D;&#x4F7F;&#x7528;&#x8FC7;&#xFF0C;&#x5305;&#x62EC;<code>vi</code>&#xFF0C;<code>lex</code>&#xFF0C;<code>sed</code>&#xFF0C;<code>AWK</code>&#x548C;<code>expr</code>&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x5176;&#x4ED6;&#x7A0B;&#x5E8F;&#xFF08;&#x4F8B;&#x5982;<code>Emacs</code>&#xFF09;&#x4E2D;&#x3002;&#x968F;&#x540E;&#xFF0C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x88AB;&#x5404;&#x79CD;&#x7A0B;&#x5E8F;&#x91C7;&#x7528;&#xFF0C;&#x8FD9;&#x4E9B;&#x65E9;&#x671F;&#x5F62;&#x5F0F;&#x5728;1992&#x5E74;&#x7684;POSIX.2&#x6807;&#x51C6;&#x4E2D;&#x5F97;&#x5230;&#x4E86;&#x6807;&#x51C6;&#x5316;&#x3002;</p>
+<p>&#x5728;1980&#x5E74;&#x4EE3;&#xFF0C;Perl&#x4E2D;&#x51FA;&#x73B0;&#x4E86;&#x66F4;&#x590D;&#x6742;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5B83;&#x6700;&#x521D;&#x662F;&#x7531;Henry Spencer (1986) &#x7F16;&#x5199;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5E93;&#x6D3E;&#x751F;&#x7684;&#xFF0C;&#x540E;&#x8005;&#x540E;&#x6765;&#x4E3A;Tcl&#x7F16;&#x5199;&#x4E86;Advanced Regular Expressions&#x7684;&#x5B9E;&#x73B0;&#x3002; Tcl&#x5E93;&#x662F;&#x5177;&#x6709;&#x6539;&#x8FDB;&#x7684;&#x6027;&#x80FD;&#x7279;&#x5F81;&#x7684; NFA/DFA &#x6DF7;&#x5408;&#x5B9E;&#x73B0;&#x3002;&#x91C7;&#x7528;Spencer&#x7684;Tcl&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5B9E;&#x73B0;&#x7684;&#x8F6F;&#x4EF6;&#x9879;&#x76EE;&#x5305;&#x62EC;PostgreSQL&#x3002; Perl&#x540E;&#x6765;&#x6269;&#x5C55;&#x4E86;Spencer&#x7684;&#x539F;&#x59CB;&#x5E93;&#x4EE5;&#x6DFB;&#x52A0;&#x8BB8;&#x591A;&#x65B0;&#x529F;&#x80FD;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x6027;&#x80FD;&#x6216;Unicode&#x5904;&#x7406;&#x65B9;&#x9762;&#x5C1A;&#x672A;&#x8D76;&#x4E0A;Spencer&#x7684;Advanced Regular Expressions&#x5B9E;&#x73B0;&#x3002; <code>Perl 6</code>&#x8BBE;&#x8BA1;&#x7684;&#x90E8;&#x5206;&#x5DE5;&#x4F5C;&#x662F;&#x6539;&#x8FDB;Perl&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x96C6;&#x6210;&#xFF0C;&#x5E76;&#x589E;&#x52A0;&#x5176;&#x8303;&#x56F4;&#x548C;&#x529F;&#x80FD;&#xFF0C;&#x4EE5;&#x5141;&#x8BB8;&#x5B9A;&#x4E49;&#x89E3;&#x6790;&#x8868;&#x8FBE;&#x5F0F;&#x8BED;&#x6CD5;&#x3002;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x79CD;&#x79F0;&#x4E3A;<code>Perl 6</code>&#x89C4;&#x5219;&#x7684;&#x8FF7;&#x4F60;&#x8BED;&#x8A00;&#xFF0C;&#x8BE5;&#x89C4;&#x5219;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;<code>Perl 6</code>&#x8BED;&#x6CD5;&#x5E76;&#x4E3A;&#x4F7F;&#x7528;&#x8BE5;&#x8BED;&#x8A00;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#x63D0;&#x4F9B;&#x5DE5;&#x5177;&#x3002;&#x8FD9;&#x4E9B;&#x89C4;&#x5219;&#x4FDD;&#x7559;&#x4E86;<code>Perl 5.x</code>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x73B0;&#x6709;&#x529F;&#x80FD;&#xFF0C;&#x4F46;&#x4E5F;&#x5141;&#x8BB8;&#x901A;&#x8FC7;&#x5B50;&#x89C4;&#x5219;&#x4EE5;BNF&#x6837;&#x5F0F;&#x5B9A;&#x4E49;&#x9012;&#x5F52;&#x4E0B;&#x964D;&#x89E3;&#x6790;&#x5668;&#x3002;</p>
+<p>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5728;&#x7ED3;&#x6784;&#x5316;&#x4FE1;&#x606F;&#x6807;&#x51C6;&#x4E2D;&#x7528;&#x4E8E;&#x6587;&#x6863;&#x548C;&#x6570;&#x636E;&#x5E93;&#x5EFA;&#x6A21;&#x7684;&#x4F7F;&#x7528;&#x59CB;&#x4E8E;1960&#x5E74;&#x4EE3;&#xFF0C;&#x5E76;&#x5728;1980&#x5E74;&#x4EE3;&#x5F97;&#x5230;&#x6269;&#x5C55;&#xFF0C;&#x5F53;&#x65F6;&#xFF0C;&#x8BF8;&#x5982;ISO SGML&#xFF08;&#x7531;ANSI&apos;GCA 101-1983&apos;&#x53D6;&#x4EE3;&#xFF09;&#x7684;&#x884C;&#x4E1A;&#x6807;&#x51C6;&#x5F97;&#x4EE5;&#x5408;&#x5E76;&#x3002;&#x7ED3;&#x6784;&#x89C4;&#x8303;&#x8BED;&#x8A00;&#x6807;&#x51C6;&#x7684;&#x5185;&#x6838;&#x7531;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7EC4;&#x6210;&#x3002;&#x5B83;&#x7684;&#x4F7F;&#x7528;&#x5728;DTD&#x5143;&#x7D20;&#x7EC4;&#x8BED;&#x6CD5;&#x4E2D;&#x5F88;&#x660E;&#x663E;&#x3002;</p>
+<p>Philip Hazel&#x4ECE;1997&#x5E74;&#x5F00;&#x59CB;&#x5F00;&#x53D1;&#x4E86;PCRE&#xFF08;&#x4E0E;Perl&#x517C;&#x5BB9;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;&#xFF0C;&#x5B83;&#x8BD5;&#x56FE;&#x7D27;&#x5BC6;&#x6A21;&#x4EFF;Perl&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x529F;&#x80FD;&#xFF0C;&#x5E76;&#x88AB;&#x8BB8;&#x591A;&#x73B0;&#x4EE3;&#x5DE5;&#x5177;&#x6240;&#x4F7F;&#x7528;&#xFF0C;&#x5305;&#x62EC;PHP&#x548C;Apache HTTP Server&#x3002;</p>
+<p>&#x5982;&#x4ECA;&#xFF0C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5728;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#xFF0C;&#x6587;&#x672C;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#xFF08;&#x7279;&#x522B;&#x662F;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#xFF09;&#xFF0C;&#x9AD8;&#x7EA7;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#x548C;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x7A0B;&#x5E8F;&#x4E2D;&#x5F97;&#x5230;&#x5E7F;&#x6CDB;&#x652F;&#x6301;&#x3002;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x652F;&#x6301;&#x662F;&#x8BB8;&#x591A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#xFF08;&#x5305;&#x62EC;Java&#x548C;Python&#xFF09;&#x7684;&#x6807;&#x51C6;&#x5E93;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5E76;&#x5185;&#x7F6E;&#x4E8E;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#xFF08;&#x5305;&#x62EC;Perl&#x548C;ECMAScript&#xFF09;&#x7684;&#x8BED;&#x6CD5;&#x4E2D;&#x3002;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;&#x901A;&#x5E38;&#x79F0;&#x4E3A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5F15;&#x64CE;&#xFF0C;&#x8BB8;&#x591A;&#x5E93;&#x53EF;&#x4F9B;&#x91CD;&#x7528;&#x3002;</p>
+</blockquote>
+<p>&#x5982;&#x4ECA;&#xFF0C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5927;&#x81F4;&#x7684;&#x6D41;&#x6D3E;&#x5173;&#x7CFB;&#x5982;&#x4E0B;</p>
+<ul>
+<li>PCRE: <strong>P</strong>erl <strong>C</strong>ompatible <strong>R</strong>egular <strong>E</strong>xpression</li>
+<li>POSIX
+<ul>
+<li>BRE: <strong>B</strong>asic <strong>R</strong>egular <strong>E</strong>xpression</li>
+<li>ERE: <strong>E</strong>xtended <strong>R</strong>egular <strong>E</strong>xpression</li>
+</ul></li>
+</ul>
+<h2 id="pcre">PCRE</h2>
+<p>PCRE&#x5176;&#x5B9E;&#x5C31;&#x662F; <a href="/2019/10/28/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%88%9D%E6%AD%A5/" title="&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x521D;&#x6B65;">&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x521D;&#x6B65;</a> &#x4E2D;&#x4ECB;&#x7ECD;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x98CE;&#x683C;</p>
+<h2 id="posix">POSIX</h2>
+<p>POSIX&#x7684;&#x5168;&#x79F0;&#x662F;<strong>P</strong>rtable <strong>O</strong>erating <strong>S</strong>ystem <strong>I</strong>nterface for uni<strong>X</strong>&#xFF0C;&#x5B83;&#x7531;&#x4E00;&#x7CFB;&#x5217;&#x89C4;&#x8303;&#x6784;&#x6210;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86; UNIX&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5E94;&#x5F53;&#x652F;&#x6301;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;<strong>POSIX&#x89C4;&#x8303;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</strong>&#x5176;&#x5B9E;&#x53EA;&#x662F;<strong>&#x5173;&#x4E8E;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;POSIX&#x89C4;&#x8303;</strong>&#xFF0C;&#x5B83;&#x5B9A;&#x4E49;&#x4E86;BRE&#xFF08;Basic Regular Expression&#xFF0C;&#x57FA;&#x672C;&#x578B;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;&#x548C;ERE&#xFF08;Extended Regular Express&#xFF0C;&#x6269;&#x5C55;&#x578B;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;&#x4E24;&#x5927;&#x6D41;&#x6D3E;&#x3002;&#x5728;&#x517C;&#x5BB9;POSIX&#x7684;UNIX&#x7CFB;&#x7EDF;&#x4E0A;&#xFF0C;<code>grep</code>&#x548C;<code>egrep</code>&#x4E4B;&#x7C7B;&#x7684;&#x5DE5;&#x5177;&#x90FD;&#x9075;&#x5FAA;POSIX&#x89C4;&#x8303;&#xFF0C;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x5E93;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E5F;&#x7B26;&#x5408;POSIX&#x89C4;&#x8303;&#x3002;</p>
+<h3 id="bre">BRE</h3>
+<p>&#x5728;<code>Linux/Unix</code>&#x5E38;&#x7528;&#x5DE5;&#x5177;&#x4E2D;&#xFF0C;<code>grep</code>&#x3001;<code>vi</code>&#x3001;<code>sed</code>&#x90FD;&#x5C5E;&#x4E8E;BRE&#x8FD9;&#x4E00;&#x6D3E;&#xFF0C;&#x5B83;&#x7684;&#x8BED;&#x6CD5;&#x770B;&#x8D77;&#x6765;&#x6BD4;&#x8F83;&#x5947;&#x602A;&#xFF0C;&#x5143;&#x5B57;&#x7B26;<code>(</code>&#x3001;<code>)</code>&#x3001;<code>{</code>&#x3001;<code>}</code>&#x5FC5;&#x987B;&#x8F6C;&#x4E49;&#x4E4B;&#x540E;&#x624D;&#x5177;&#x6709;&#x7279;&#x6B8A;&#x542B;&#x4E49;&#xFF0C;&#x6240;&#x4EE5;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;<code>(a)b</code>&#x53EA;&#x80FD;&#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;<code>(a)b</code>&#x800C;&#x4E0D;&#x662F;&#x5B57;&#x7B26;&#x4E32;<code>ab</code>&#xFF1B;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;<code>a{1,2}</code>&#x53EA;&#x80FD;&#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;<code>a{1,2}</code>&#xFF0C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;<code>a\{1,2\}</code>&#x624D;&#x80FD;&#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;<code>a</code>&#x6216;&#x8005;<code>aa</code>&#x3002;</p>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x8FD9;&#x4E48;&#x9EBB;&#x70E6;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#x7684;&#x8BDE;&#x751F;&#x65F6;&#x95F4;&#x5F88;&#x65E9;&#xFF0C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8BB8;&#x591A;&#x529F;&#x80FD;&#x5374;&#x662F;&#x9010;&#x6B65;&#x53D1;&#x5C55;&#x6F14;&#x5316;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x4E4B;&#x524D;&#x8FD9;&#x4E9B;&#x5143;&#x5B57;&#x7B26;&#x53EF;&#x80FD;&#x5E76;&#x6CA1;&#x6709;&#x7279;&#x6B8A;&#x7684;&#x542B;&#x4E49;&#xFF1B;&#x4E3A;&#x4FDD;&#x8BC1;&#x5411;&#x540E;&#x517C;&#x5BB9;&#xFF0C;&#x5C31;&#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x8F6C;&#x4E49;&#x3002;&#x800C;&#x4E14;&#x6709;&#x4E9B;&#x529F;&#x80FD;&#x751A;&#x81F3;&#x6839;&#x672C;&#x5C31;&#x4E0D;&#x652F;&#x6301;&#xFF0C;&#x6BD4;&#x5982;BRE&#x5C31;&#x4E0D;&#x652F;&#x6301;<code>+</code>&#x548C;<code>?</code>&#x91CF;&#x8BCD;&#xFF0C;&#x4E5F;&#x4E0D;&#x652F;&#x6301;&#x591A;&#x9009;&#x7ED3;&#x6784;<code>(&#x2026;|&#x2026;)</code>&#x548C;&#x53CD;&#x5411;&#x5F15;&#x7528;<code>\1</code>&#x3001;<code>\2</code>&#x7B49;&#x7B49;</p>
+<p>&#x4E0D;&#x8FC7;&#x4ECA;&#x5929;&#xFF0C;&#x7EAF;&#x7CB9;&#x7684;BRE&#x5DF2;&#x7ECF;&#x5F88;&#x5C11;&#x89C1;&#x4E86;&#xFF0C;&#x6BD5;&#x7ADF;&#x5927;&#x5BB6;&#x5DF2;&#x7ECF;&#x8BA4;&#x4E3A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7406;&#x6240;&#x5E94;&#x5F53;&#x652F;&#x6301;&#x591A;&#x9009;&#x7ED3;&#x6784;&#x548C;&#x53CD;&#x5411;&#x5F15;&#x7528;&#x7B49;&#x529F;&#x80FD;&#xFF0C;&#x6CA1;&#x6709;&#x786E;&#x5B9E;&#x592A;&#x4E0D;&#x65B9;&#x4FBF;&#x3002;&#x6240;&#x4EE5;&#x867D;&#x7136;<code>vi</code>&#x5C5E;&#x4E8E;BRE&#x6D41;&#x6D3E;&#xFF0C;&#x4F46;&#x63D0;&#x4F9B;&#x4E86;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x3002;GNU&#x4E5F;&#x5BF9;BRE&#x505A;&#x4E86;&#x6269;&#x5C55;&#xFF0C;&#x652F;&#x6301;<code>+</code>&#x3001;<code>?</code>&#x3001;<code>|</code>&#xFF0C;&#x53EA;&#x662F;&#x4F7F;&#x7528;&#x65F6;&#x5FC5;&#x987B;&#x5199;&#x6210;<code>\+</code>&#x3001;<code>\?</code>&#x3001;<code>\|</code>&#xFF0C;&#x800C;&#x4E14;&#x4E5F;&#x652F;&#x6301;<code>\1</code>&#x3001;<code>\2</code>&#x4E4B;&#x7C7B;&#x53CD;&#x5411;&#x5F15;&#x7528;&#x3002;&#x8FD9;&#x6837;&#xFF0C;GNU&#x7684;grep&#x7B49;&#x5DE5;&#x5177;&#x867D;&#x7136;&#x540D;&#x4E49;&#x4E0A;&#x5C5E;&#x4E8E;BRE&#x6D41;&#xFF0C;&#x4F46;&#x66F4;&#x786E;&#x5207;&#x7684;&#x540D;&#x79F0;&#x662F;<code>GNU BRE</code>&#x3002;</p>
+<h3 id="ere">ERE</h3>
+<p>&#x5728;<code>Linux/Unix</code>&#x5E38;&#x7528;&#x5DE5;&#x5177;&#x4E2D;&#xFF0C;<code>egrep</code>&#x3001;<code>awk</code>&#x5219;&#x5C5E;&#x4E8E;ERE&#x8FD9;&#x4E00;&#x6D3E;&#x3002;&#x867D;&#x7136;BRE&#x540D;&#x4E3A;&#x201C;&#x57FA;&#x672C;&#x201D;&#x800C;ERE&#x540D;&#x4E3A;&#x201C;&#x6269;&#x5C55;&#x201D;&#xFF0C;&#x4F46;ERE&#x5E76;&#x4E0D;&#x8981;&#x6C42;&#x517C;&#x5BB9;BRE&#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x800C;&#x662F;&#x81EA;&#x6210;&#x4E00;&#x4F53;&#x3002;&#x56E0;&#x6B64;&#x5176;&#x4E2D;&#x7684;&#x5143;&#x5B57;&#x7B26;&#x4E0D;&#x7528;&#x8F6C;&#x4E49;&#xFF08;&#x5728;&#x5143;&#x5B57;&#x7B26;&#x4E4B;&#x524D;&#x6DFB;&#x52A0;&#x53CD;&#x659C;&#x7EBF;&#x4F1A;&#x53D6;&#x6D88;&#x5176;&#x7279;&#x6B8A;&#x542B;&#x4E49;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;<code>(ab|cd)</code>&#x5C31;&#x53EF;&#x4EE5;&#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32; <code>ab</code>&#x6216;&#x8005;<code>cd</code>&#xFF0C;&#x91CF;&#x8BCD;<code>+</code>&#x3001;<code>?</code>&#x3001;<code>{n,m}</code>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;ERE&#x5E76;&#x6CA1;&#x6709;&#x660E;&#x786E;&#x89C4;&#x5B9A;&#x652F;&#x6301;&#x53CD;&#x5411;&#x5F15;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x5C11;&#x5DE5;&#x5177;&#x90FD;&#x652F;&#x6301;<code>\1</code>&#x3001;<code>\2</code>&#x4E4B;&#x7C7B;&#x7684;&#x53CD;&#x5411;&#x5F15;&#x7528;&#x3002;</p>
+<p>GNU&#x51FA;&#x54C1;&#x7684;<code>egrep</code>&#x7B49;&#x5DE5;&#x5177;&#x5C31;&#x5C5E;&#x4E8E;ERE&#x6D41;&#xFF08;&#x66F4;&#x51C6;&#x786E;&#x7684;&#x540D;&#x5B57;&#x662F;GNU ERE&#xFF09;&#xFF0C;&#x4F46;&#x56E0;&#x4E3A;GNU&#x5DF2;&#x7ECF;&#x5BF9;BRE&#x505A;&#x4E86;&#x4E0D;&#x5C11;&#x6269;&#x5C55;&#xFF0C;&#x6240;&#x8C13;&#x7684;GNU ERE&#x5176;&#x5B9E;&#x53EA;&#x662F;&#x4E2A;&#x8BF4;&#x6CD5;&#x800C;&#x5DF2;&#xFF0C;&#x5B83;&#x6709;&#x7684;&#x529F;&#x80FD;GNU BRE&#x90FD;&#x6709;&#x4E86;&#xFF0C;&#x53EA;&#x662F;&#x5143;&#x5B57;&#x7B26;&#x4E0D;&#x9700;&#x8981;&#x8F6C;&#x4E49;&#x800C;&#x5DF2;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x8868;&#x683C;&#x7B80;&#x8981;&#x8BF4;&#x660E;&#x4E86;&#x51E0;&#x79CD; POSIX &#x6D41;&#x6D3E;&#x7684;&#x533A;&#x522B;&#xFF08;&#x5176;&#x5B9E;&#xFF0C;&#x73B0;&#x5728;&#x7684; BRE &#x548C; ERE &#x5728;&#x529F;&#x80FD;&#x4E0A;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF0C;&#x4E3B;&#x8981;&#x7684;&#x5DEE;&#x5F02;&#x662F;&#x5728;&#x5143;&#x5B57;&#x7B26;&#x7684;&#x8F6C;&#x4E49;&#x4E0A;&#xFF09;&#x3002;</p>
+<h3 id="&#x51E0;&#x79CD;-posix-&#x6D41;&#x6D3E;&#x7684;&#x8BF4;&#x660E;">&#x51E0;&#x79CD; POSIX &#x6D41;&#x6D3E;&#x7684;&#x8BF4;&#x660E;</h3>
+<table>
+<thead>
+<tr class="header">
+<th>&#x6D41;&#x6D3E;</th>
+<th>&#x8BF4;&#x660E;</th>
+<th>&#x5DE5;&#x5177;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BRE</td>
+<td><code>(</code>&#x3001;<code>)</code>&#x3001;<code>{</code>&#x3001;<code>}</code>&#x90FD;&#x5FC5;&#x987B;&#x8F6C;&#x4E49;&#x4F7F;&#x7528;&#xFF0C;&#x4E0D;&#x652F;&#x6301;<code>+</code>&#x3001;<code>?</code>&#x3001;<code>|</code></td>
+<td><code>grep</code>&#x3001;<code>sed</code>&#x3001;<code>vi</code>&#xFF08;&#x4F46;<code>vi</code>&#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x591A;&#x9009;&#x7ED3;&#x6784;&#x548C;&#x53CD;&#x5411;&#x5F15;&#x7528;&#xFF09;</td>
+</tr>
+<tr class="even">
+<td>GNU BRE</td>
+<td><code>(</code>&#x3001;<code>)</code>&#x3001;<code>{</code>&#x3001;<code>}</code>&#x3001;<code>+</code>&#x3001;<code>?</code>&#x3001;<code>|</code>&#x90FD;&#x5FC5;&#x987B;&#x8F6C;&#x4E49;&#x4F7F;&#x7528;</td>
+<td><code>GNU grep</code>&#x3001;<code>GNU sed</code></td>
+</tr>
+<tr class="odd">
+<td>ERE</td>
+<td>&#x5143;&#x5B57;&#x7B26;&#x4E0D;&#x5FC5;&#x8F6C;&#x4E49;&#xFF0C;<code>+</code>&#x3001;<code>?</code>&#x3001;<code>(</code>&#x3001;<code>)</code>&#x3001;<code>{</code>&#x3001;<code>}</code>&#x3001;<code>|</code>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF0C;<code>\1</code>&#x3001;<code>\2</code>&#x7684;&#x652F;&#x6301;&#x4E0D;&#x786E;&#x5B9A;</td>
+<td><code>egrep</code>&#x3001;<code>awk</code></td>
+</tr>
+<tr class="even">
+<td>GNU ERE</td>
+<td>&#x5143;&#x5B57;&#x7B26;&#x4E0D;&#x5FC5;&#x8F6C;&#x4E49;&#xFF0C;<code>+</code>&#x3001;<code>?</code>&#x3001;<code>(</code>&#x3001;<code>)</code>&#x3001;<code>{</code>&#x3001;<code>}</code>&#x3001;<code>|</code>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF0C;&#x652F;&#x6301;<code>\1</code>&#x3001;<code>\2</code></td>
+<td><code>grep &#x2013;E</code>&#x3001;<code>GNU awk</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x5404;&#x79CD;&#x8868;&#x793A;&#x6CD5;&#x5BF9;&#x7167;&#x8868;">&#x5404;&#x79CD;&#x8868;&#x793A;&#x6CD5;&#x5BF9;&#x7167;&#x8868;</h2>
+<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x67E5;&#x9605;&#xFF0C;&#x4E0B;&#x9762;&#x518D;&#x7528;&#x4E00;&#x5F20;&#x8868;&#x683C;&#x5217;&#x51FA;&#x57FA;&#x672C;&#x7684;&#x6B63;&#x5219;&#x529F;&#x80FD;&#x5728;&#x5E38;&#x7528;&#x5DE5;&#x5177;&#x4E2D;&#x7684;&#x8868;&#x793A;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;&#x7684;&#x5DE5;&#x5177;GNU&#x7684;&#x7248;&#x672C;&#x4E3A;&#x51C6;&#x3002;</p>
+<p>&#x5E38;&#x7528;Linux/Unix&#x5DE5;&#x5177;&#x4E2D;&#x7684;&#x8868;&#x793A;&#x6CD5;</p>
+<table>
+<thead>
+<tr class="header">
+<th>PCRE &#x8BB0;&#x6CD5;</th>
+<th><code>vi</code>/<code>vim</code></th>
+<th><code>grep</code></th>
+<th><code>awk</code></th>
+<th><code>sed</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>*</code></td>
+<td><code>*</code></td>
+<td><code>*</code></td>
+<td><code>*</code></td>
+<td><code>*</code></td>
+</tr>
+<tr class="even">
+<td><code>+</code></td>
+<td><code>\+</code></td>
+<td><code>\+</code></td>
+<td><code>+</code></td>
+<td><code>\+</code></td>
+</tr>
+<tr class="odd">
+<td><code>?</code></td>
+<td><code>\=</code></td>
+<td><code>\?</code></td>
+<td><code>?</code></td>
+<td><code>\?</code></td>
+</tr>
+<tr class="even">
+<td><code>{m,n}</code></td>
+<td><code>\{m,n}</code></td>
+<td><code>\{m,n\}</code></td>
+<td><code>{m,n}</code></td>
+<td><code>\{m,n\}</code></td>
+</tr>
+<tr class="odd">
+<td><code>\b *</code></td>
+<td><code>\&lt; \&gt;</code></td>
+<td><code>\&lt; \&gt;</code></td>
+<td><code>\&lt; \&gt;</code></td>
+<td><code>\y \&lt; \&gt;</code></td>
+</tr>
+<tr class="even">
+<td><code>(&#x2026;|&#x2026;)</code></td>
+<td><code>\(&#x2026;\|&#x2026;\)</code></td>
+<td><code>\(&#x2026;\|&#x2026;\)</code></td>
+<td><code>(&#x2026;|&#x2026;)</code></td>
+<td><code>(&#x2026;|&#x2026;)</code></td>
+</tr>
+<tr class="odd">
+<td><code>(&#x2026;)</code></td>
+<td><code>\(&#x2026;\)</code></td>
+<td><code>\(&#x2026;\)</code></td>
+<td><code>(&#x2026;)</code></td>
+<td><code>(&#x2026;)</code></td>
+</tr>
+<tr class="even">
+<td><code>\1</code> <code>\2</code></td>
+<td><code>\1</code> <code>\2</code></td>
+<td><code>\1</code> <code>\2</code></td>
+<td>&#x4E0D;&#x652F;&#x6301;</td>
+<td><code>\1</code> <code>\2</code></td>
+</tr>
+</tbody>
+</table>
+<p>&#x6CE8;&#xFF1A;PCRE &#x4E2D;&#x5E38;&#x7528;<code>\b</code>&#x6765;&#x8868;&#x793A;&#x201C;&#x5355;&#x8BCD;&#x7684;&#x8D77;&#x59CB;&#x6216;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#x201D;&#xFF0C;&#x4F46; Linux/Unix &#x7684;&#x5DE5;&#x5177;&#x4E2D;&#xFF0C;&#x901A;&#x5E38;&#x7528;<code>\&lt;</code>&#x6765;&#x5339;&#x914D;&#x201C;&#x5355;&#x8BCD;&#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x201D;&#xFF0C;&#x7528;<code>\&gt;</code>&#x6765;&#x5339;&#x914D;&#x201C;&#x5355;&#x8BCD;&#x7684;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#x201D;&#xFF0C;<code>sed</code>&#x4E2D;&#x7684;<code>\y</code>&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x5339;&#x914D;&#x8FD9;&#x4E24;&#x4E2A;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x50CF;&#x5728;VsCode&#x7684;Vim&#x63D2;&#x4EF6;&#x4E2D;&#xFF0C;&#x5BF9;Vim&#x7684;&#x652F;&#x6301;&#x5F88;&#x6709;&#x9650;&#xFF0C;&#x800C;&#x5B83;&#x652F;&#x6301;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5C31;&#x662F;PCRE&#x7C7B;&#x578B;&#x7684;</p>
+<h2 id="posix-&#x5B57;&#x7B26;&#x7EC4;">POSIX &#x5B57;&#x7B26;&#x7EC4;</h2>
+<p>&#x5728;&#x67D0;&#x4E9B;&#x6587;&#x6863;&#x4E2D;&#xFF0C;&#x4F60;&#x8FD8;&#x4F1A;&#x53D1;&#x73B0;&#x7C7B;&#x4F3C;<code>[:digit:]</code>&#x3001;<code>[:lower:]</code>&#x4E4B;&#x7C7B;&#x7684;&#x8868;&#x793A;&#x6CD5;&#xFF0C;&#x5B83;&#x4EEC;&#x770B;&#x8D77;&#x6765;&#x4E0D;&#x96BE;&#x7406;&#x89E3;&#xFF08;<code>digit</code>&#x5C31;&#x662F;&#x201C;&#x6570;&#x5B57;&#x201D;&#xFF0C;<code>lower</code>&#x5C31;&#x662F;&#x201C;&#x5C0F;&#x5199;&#x201D;&#xFF09;&#xFF0C;&#x4F46;&#x53C8;&#x5F88;&#x5947;&#x602A;&#xFF0C;&#x8FD9;&#x5C31;&#x662F; POSIX &#x5B57;&#x7B26;&#x7EC4;&#x3002;&#x4E0D;&#x4EC5;&#x5728; Linux/Unix &#x7684;&#x5E38;&#x89C1;&#x5DE5;&#x5177;&#x4E2D;&#xFF0C;&#x751A;&#x81F3;&#x4E00;&#x4E9B;&#x53D8;&#x6210;&#x8BED;&#x8A00;&#x4E2D;&#x90FD;&#x51FA;&#x73B0;&#x4E86;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x7EC4;&#xFF0C;&#x4E3A;&#x907F;&#x514D;&#x56F0;&#x60D1;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x5FC5;&#x8981;&#x7B80;&#x8981;&#x4ECB;&#x7ECD;&#x5B83;&#x4EEC;&#x3002;</p>
+<p>&#x5728; POSIX &#x89C4;&#x8303;&#x4E2D;&#xFF0C;<code>[a-z]</code>&#x3001;<code>[aeiou]</code>&#x4E4B;&#x7C7B;&#x7684;&#x8BB0;&#x6CD5;&#x4ECD;&#x7136;&#x662F;&#x5408;&#x6CD5;&#x7684;&#xFF0C;&#x5176;&#x610F;&#x4E49;&#x4E0E; PCRE &#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x7EC4;&#x4E5F;&#x6CA1;&#x6709;&#x533A;&#x522B;&#xFF0C;&#x53EA;&#x662F;&#x8FD9;&#x7C7B;&#x8BB0;&#x6CD5;&#x7684;&#x51C6;&#x786E;&#x540D;&#x79F0;&#x662F; POSIX &#x65B9;&#x62EC;&#x53F7;&#x8868;&#x8FBE;&#x5F0F;&#xFF08;bracket expression&#xFF09;&#xFF0C;&#x5B83;&#x4E3B;&#x8981;&#x7528;&#x5728; Unix/Linux &#x7CFB;&#x7EDF;&#x4E2D;&#x3002;POSIX &#x65B9;&#x62EC;&#x53F7;&#x8868;&#x793A;&#x6CD5;&#x4E0E; PCRE &#x5B57;&#x7B26;&#x7EC4;&#x7684;&#x6700;&#x4E3B;&#x8981;&#x5DEE;&#x522B;&#x5728;&#x4E8E;&#xFF1A;POSIX &#x5B57;&#x7B26;&#x7EC4;&#x4E2D;&#xFF0C;&#x53CD;&#x659C;&#x7EBF;<code>\</code>&#x4E0D;&#x662F;&#x7528;&#x6765;&#x8F6C;&#x4E49;&#x7684;&#x3002;&#x6240;&#x4EE5; POSIX &#x65B9;&#x62EC;&#x53F7;&#x8868;&#x793A;&#x6CD5;<code>[\d]</code>&#x53EA;&#x80FD;&#x5339;&#x914D;<code>\</code>&#x548C;<code>d</code>&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x800C;&#x4E0D;&#x662F;<code>[0-9]</code>&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x5B57;&#x7B26;&#x7EC4;&#x4E2D;&#x7279;&#x6B8A;&#x610F;&#x4E49;&#x5B57;&#x7B26;&#x7684;&#x8F6C;&#x4E49;&#x95EE;&#x9898;&#xFF0C;POSIX &#x65B9;&#x62EC;&#x53F7;&#x8868;&#x793A;&#x6CD5;&#x89C4;&#x5B9A;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5728;&#x5B57;&#x7B26;&#x7EC4;&#x4E2D;&#x8868;&#x8FBE;&#x5B57;&#x7B26;]&#xFF08;&#x800C;&#x4E0D;&#x662F;&#x4F5C;&#x4E3A;&#x5B57;&#x7B26;&#x7EC4;&#x7684;&#x7ED3;&#x675F;&#x6807;&#x8BB0;&#xFF09;&#xFF0C;&#x5E94;&#x5F53;&#x8BA9;&#x5B83;&#x7D27;&#x8DDF;&#x5728;&#x5B57;&#x7B26;&#x7EC4;&#x7684;&#x5F00;&#x65B9;&#x62EC;&#x53F7;&#x4E4B;&#x540E;&#xFF0C;&#x6240;&#x4EE5; POSIX &#x4E2D;&#xFF0C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;<code>[]a]</code>&#x80FD;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x5C31;&#x662F;<code>]</code>&#x548C;<code>a</code>&#xFF1B;&#x5982;&#x679C;&#x8981;&#x5728; POSIX &#x65B9;&#x62EC;&#x53F7;&#x8868;&#x793A;&#x6CD5;&#x4E2D;&#x8868;&#x8FBE;&#x5B57;&#x7B26;<code>-</code>&#xFF08;&#x800C;&#x4E0D;&#x662F;&#x8303;&#x56F4;&#x8868;&#x793A;&#x6CD5;&#xFF09;&#xFF0C;&#x5FC5;&#x987B;&#x5C06;&#x5B83;&#x7D27;&#x6328;&#x5728;&#x95ED;&#x65B9;&#x62EC;&#x53F7;<code>]</code>&#x4E4B;&#x524D;&#xFF0C;&#x6240;&#x4EE5;<code>[a-]</code>&#x80FD;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x5C31;&#x662F;<code>a</code>&#x548C;<code>-</code>&#x3002;</p>
+<p>POSIX &#x89C4;&#x8303;&#x4E5F;&#x5B9A;&#x4E49;&#x4E86; POSIX &#x5B57;&#x7B26;&#x7EC4;&#xFF0C;&#x5B83;&#x8FD1;&#x4F3C;&#x7B49;&#x4EF7;&#x4E8E;&#x4E8E; PCRE &#x7684;&#x5B57;&#x7B26;&#x7EC4;&#x7B80;&#x8BB0;&#x6CD5;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x6709;&#x76F4;&#x89C2;&#x610F;&#x4E49;&#x7684;&#x540D;&#x5B57;&#x6765;&#x8868;&#x793A;&#x67D0;&#x4E00;&#x7EC4;&#x5B57;&#x7B26;&#xFF0C;&#x6BD4;&#x5982;<code>digit</code>&#x8868;&#x793A;&#x201C;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#x201D;&#xFF0C;<code>alpha</code>&#x8868;&#x793A;&#x201C;&#x5B57;&#x6BCD;&#x5B57;&#x7B26;&#x201D;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;POSIX &#x4E2D;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x6982;&#x5FF5;&#xFF1A;<strong>locale</strong>&#xFF08;&#x901A;&#x5E38;&#x7FFB;&#x8BD1;&#x4E3A;&#x201C;&#x8BED;&#x8A00;&#x73AF;&#x5883;&#x201D;&#xFF09;&#x3002;&#x5B83;&#x662F;&#x4E00;&#x7EC4;&#x4E0E;&#x8BED;&#x8A00;&#x548C;&#x6587;&#x5316;&#x76F8;&#x5173;&#x7684;&#x8BBE;&#x5B9A;&#xFF0C;&#x5305;&#x62EC;&#x65E5;&#x671F;&#x683C;&#x5F0F;&#x3001;&#x8D27;&#x5E01;&#x5E01;&#x503C;&#x3001;&#x5B57;&#x7B26;&#x7F16;&#x7801;&#x7B49;&#x7B49;&#x3002;POSIX &#x5B57;&#x7B26;&#x7EC4;&#x7684;&#x610F;&#x4E49;&#x4F1A;&#x6839;&#x636E;locale&#x7684;&#x53D8;&#x5316;&#x800C;&#x53D8;&#x5316;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x8868;&#x683C;&#x4ECB;&#x7ECD;&#x4E86;&#x5E38;&#x89C1;&#x7684; POSIX &#x5B57;&#x7B26;&#x7EC4;&#x5728; ASCII &#x8BED;&#x8A00;&#x73AF;&#x5883;&#x4E0E; Unicode &#x8BED;&#x8A00;&#x73AF;&#x5883;&#x4E0B;&#x7684;&#x610F;&#x4E49;&#xFF0C;&#x4F9B;&#x5927;&#x5BB6;&#x53C2;&#x8003;&#x3002;</p>
+<table>
+<thead>
+<tr class="header">
+<th>POSIX &#x5B57;&#x7B26;&#x7EC4;</th>
+<th>&#x8BF4;&#x660E;</th>
+<th>ASCII &#x8BED;&#x8A00;&#x73AF;&#x5883;</th>
+<th>Unicode &#x8BED;&#x8A00;&#x73AF;&#x5883;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[:alnum:]*</code></td>
+<td>&#x5B57;&#x6BCD;&#x5B57;&#x7B26;&#x548C;&#x6570;&#x5B57;&#x5B57;&#x7B26;</td>
+<td><code>[a-zA-Z0-9]</code></td>
+<td><code>[\p{L&amp;}\p{Nd}]</code></td>
+</tr>
+<tr class="even">
+<td><code>[:alpha:]</code></td>
+<td>&#x5B57;&#x6BCD;</td>
+<td><code>[a-zA-Z]</code></td>
+<td><code>\p{L&amp;}</code></td>
+</tr>
+<tr class="odd">
+<td><code>[:ascii:]</code></td>
+<td>ASCII&#x5B57;&#x7B26;</td>
+<td><code>[\x00-\x7F]</code></td>
+<td><code>\p{InBasicLatin}</code></td>
+</tr>
+<tr class="even">
+<td><code>[:blank:]</code></td>
+<td>&#x7A7A;&#x683C;&#x5B57;&#x7B26;&#x548C;&#x5236;&#x8868;&#x7B26;</td>
+<td><code>[ \t]</code></td>
+<td><code>[\p{Zs}\t]</code></td>
+</tr>
+<tr class="odd">
+<td><code>[:cntrl:]</code></td>
+<td>&#x63A7;&#x5236;&#x5B57;&#x7B26;</td>
+<td><code>[\x00-\x1F\x7F]</code></td>
+<td><code>\p{Cc}</code></td>
+</tr>
+<tr class="even">
+<td><code>[:digit:]</code></td>
+<td>&#x6570;&#x5B57;&#x5B57;&#x7B26;</td>
+<td><code>[0-9]</code></td>
+<td><code>\p{Nd}</code></td>
+</tr>
+<tr class="odd">
+<td><code>[:graph:]</code></td>
+<td>&#x7A7A;&#x767D;&#x5B57;&#x7B26;&#x4E4B;&#x5916;&#x7684;&#x5B57;&#x7B26;</td>
+<td><code>[\x21-\x7E]</code></td>
+<td><code>[^\p{Z}\p{C}]</code></td>
+</tr>
+<tr class="even">
+<td><code>[:lower:]</code></td>
+<td>&#x5C0F;&#x5199;&#x5B57;&#x6BCD;&#x5B57;&#x7B26;</td>
+<td><code>[a-z]</code></td>
+<td><code>\p{Ll}</code></td>
+</tr>
+<tr class="odd">
+<td><code>[:print:]</code></td>
+<td>&#x7C7B;&#x4F3C;<code>[:graph:]</code>&#xFF0C;&#x4F46;&#x5305;&#x62EC;&#x7A7A;&#x767D;&#x5B57;&#x7B26;</td>
+<td><code>[\x20-\x7E]</code></td>
+<td><code>\P{C}</code></td>
+</tr>
+<tr class="even">
+<td><code>[:punct:]</code></td>
+<td>&#x6807;&#x70B9;&#x7B26;&#x53F7;</td>
+<td>[1]</td>
+<td><code>[\p{P}\p{S}]</code></td>
+</tr>
+<tr class="odd">
+<td><code>[:space:]</code></td>
+<td>&#x7A7A;&#x767D;&#x5B57;&#x7B26;</td>
+<td><code>[ \t\r\n\v\f]</code></td>
+<td><code>[\p{Z}\t\r\n\v\f]</code></td>
+</tr>
+<tr class="even">
+<td><code>[:upper:]</code></td>
+<td>&#x5927;&#x5199;&#x5B57;&#x6BCD;&#x5B57;&#x7B26;</td>
+<td><code>[A-Z]</code></td>
+<td><code>\p{Lu}</code></td>
+</tr>
+<tr class="odd">
+<td><code>[:word:]*</code></td>
+<td>&#x5B57;&#x6BCD;&#x5B57;&#x7B26;</td>
+<td><code>[A-Za-z0-9_]</code></td>
+<td><code>[\p{L}\p{N}\p{Pc}]</code></td>
+</tr>
+<tr class="even">
+<td><code>[:xdigit:]</code></td>
+<td>&#x5341;&#x516D;&#x8FDB;&#x5236;&#x5B57;&#x7B26;</td>
+<td><code>[A-Fa-f0-9]</code></td>
+<td><code>[A-Fa-f0-9]</code></td>
+</tr>
+</tbody>
+</table>
+<p>[1] &#x8FD9;&#x91CC;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x662F;<code>[][!&quot;#$%&amp;&apos;()*+,./:;&lt;=&gt;?@\^_`{|}~-]</code></p>
+<p>POSIX&#x5B57;&#x7B26;&#x7EC4;&#x7684;&#x4F7F;&#x7528;&#x6709;&#x6240;&#x4E0D;&#x540C;&#x3002;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;PCRE &#x5B57;&#x7B26;&#x7EC4;&#x7B80;&#x8BB0;&#x6CD5;&#x53EF;&#x4EE5;&#x8131;&#x79BB;&#x65B9;&#x62EC;&#x53F7;&#x76F4;&#x63A5;&#x51FA;&#x73B0;&#xFF0C;&#x800C; POSIX &#x5B57;&#x7B26;&#x7EC4;&#x5FC5;&#x987B;&#x51FA;&#x73B0;&#x5728;&#x65B9;&#x62EC;&#x53F7;&#x5185;&#xFF0C;&#x6240;&#x4EE5;&#x540C;&#x6837;&#x662F;&#x5339;&#x914D;&#x6570;&#x5B57;&#x5B57;&#x7B26;&#xFF0C;&#x5355;&#x72EC;&#x51FA;&#x73B0;&#x65F6;&#xFF0C;PCRE &#x4E2D;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5199;<code>\d</code>&#xFF0C;&#x800C; POSIX &#x5B57;&#x7B26;&#x7EC4;&#x5C31;&#x5FC5;&#x987B;&#x5199;&#x6210;<code>[[:digit:]]</code>&#x3002;</p>
+<p>Linux/Unix &#x4E0B;&#x7684;&#x5DE5;&#x5177;&#x4E2D;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; POSIX &#x5B57;&#x7B26;&#x7EC4;&#xFF0C;&#x800C; PCRE &#x7684;&#x5B57;&#x7B26;&#x7EC4;&#x7B80;&#x8BB0;&#x6CD5;<code>\w</code>&#x3001;<code>\d</code>&#x7B49;&#x5219;&#x5927;&#x591A;&#x4E0D;&#x652F;&#x6301;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x770B;&#x5230;<code>[[:space:]]</code>&#x800C;&#x4E0D;&#x662F;<code>\s</code>&#xFF0C;&#x4E00;&#x5B9A;&#x4E0D;&#x8981;&#x611F;&#x5230;&#x5947;&#x602A;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x5728;&#x5E38;&#x7528;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;Java&#x3001;PHP&#x3001;Ruby &#x4E5F;&#x652F;&#x6301;&#x4F7F;&#x7528; POSIX &#x5B57;&#x7B26;&#x7EC4;&#x3002;&#x5176;&#x4E2D; Java &#x548C; PHP &#x4E2D;&#x7684; POSIX &#x5B57;&#x7B26;&#x7EC4;&#x90FD;&#x662F;&#x6309;&#x7167; ASCII &#x8BED;&#x8A00;&#x73AF;&#x5883;&#x8FDB;&#x884C;&#x5339;&#x914D;&#xFF1B;Ruby &#x7684;&#x60C5;&#x51B5;&#x5219;&#x8981;&#x590D;&#x6742;&#x4E00;&#x70B9;&#xFF0C;Ruby 1.8 &#x6309;&#x7167; ASCII &#x8BED;&#x8A00;&#x73AF;&#x5883;&#x8FDB;&#x884C;&#x5339;&#x914D;&#xFF0C;&#x800C;&#x4E14;&#x4E0D;&#x652F;&#x6301;<code>[:word:]</code>&#x548C;<code>[:alnum:]</code>&#xFF0C;Ruby 1.9 &#x6309;&#x7167; Unicode &#x8BED;&#x8A00;&#x73AF;&#x5883;&#x8FDB;&#x884C;&#x5339;&#x914D;&#xFF0C;&#x540C;&#x65F6;&#x652F;&#x6301;<code>[:word:]</code>&#x548C;<code>[:alnum:]</code>&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E9B;&#x91CD;&#x8981;&#x7684;&#x8D44;&#x6599;</p>
+<p><a href="https://pubs.opengroup.org/onlinepubs/9699919799/" target="_blank" rel="noopener">IEEE&#x6807;&#x51C6;&#x6587;&#x6863;</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/正则表达式/">正则表达式</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <!-- <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 玩味者
+    
+  </p> -->
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
