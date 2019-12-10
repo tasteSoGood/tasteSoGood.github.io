@@ -57,6 +57,62 @@
 
   
     
+    <h3 class="article-title"><a href="/2019/12/10/在Manjaro下Neovim无法使用系统剪切板/"><span>在Manjaro下Neovim无法使用系统剪切板</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/12/10/在Manjaro下Neovim无法使用系统剪切板/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-12-10T10:23:41.000Z">
+          2019-12-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>这个问题虽然是出在Manjaro下的，但是它可能会出现在各种Linux发行版中</p>
+<p>一般来说，在Vim下可能会无法使用系统剪切板，而在Neovim下可以调用<code>+</code>或者<code>*</code>寄存器来复制或者粘贴内容到系统剪切板中。如果需要查看Vim是否支持调用系统剪切板，可以用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim --version | grep clipboard</span><br></pre></td></tr></table></figure>
+<p>如果出现了下面这样的结果，那么就是不支持的</p>
+        
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Manjaro/">Manjaro</a><a href="/tags/Neovim/">Neovim</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2019/11/21/U盘自动挂载/"><span>U盘自动挂载</span></a></h3>
     
   
@@ -533,61 +589,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/Python/">Python</a><a href="/tags/Numpy/">Numpy</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2019/09/27/cut的使用方法/"><span>cut的使用方法</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2019/09/27/cut的使用方法/" rel="bookmark">
-        <time class="entry-date published" datetime="2019-09-26T16:00:00.000Z">
-          2019-09-27
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>在Bash中有一个<code>cut</code>指令，可以用于对文件的每一行进行剪切，熟练掌握以后还是很有作用的。</p>
-<p>可能有人会觉得，<code>awk</code>不就已经是按行处理文件的工具了吗，哪里还用得到别的？其实，<code>cut</code>可以用更加简洁的写法实现<code>awk</code>需要很长的语句或者逻辑才能完成的工作，而<code>awk</code>将自身拓展成了一个完整的脚本语言，可以应对更加复杂的文本情况，两者各有所长</p>
-<p>我们可以通过<code>man cut</code>来查看一下它的基本用法</p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Linux/">Linux</a><a href="/tags/Bash/">Bash</a>
     </span>
     
 

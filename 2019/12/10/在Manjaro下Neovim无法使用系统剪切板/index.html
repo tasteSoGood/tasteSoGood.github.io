@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>在Manjaro下Neovim无法使用系统剪切板 | 玩味者 | 玩味者的理性空间</title>
+
+  
+
+  
+  <meta name="description" content="这个问题虽然是出在Manjaro下的，但是它可能会出现在各种Linux发行版中
+一般来说，在Vim下可能会无法使用系统剪切板，而在Neovim下可以调用+或者*寄存器来复制或者粘贴内容到系统剪切板中。如果需要查看Vim是否支持调用系统剪切板，可以用
+vim --version | grep clipboard
+如果出现了下面这样的结果，那么就是不支持的">
+  
+
+  
+  
+  <meta name="keywords" content="Manjaro,Neovim">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="在Manjaro下Neovim无法使用系统剪切板"/>
+
+  <meta property="og:site_name" content="玩味者"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="玩味者" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">玩味者</a>
+    </h1>
+    <p class="site-description">玩味者的理性空间</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="../../../../index.html">主页</a></li>
+      
+        <li><a href="../../../../archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>在Manjaro下Neovim无法使用系统剪切板</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/12/10/在Manjaro下Neovim无法使用系统剪切板/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-12-10T10:23:41.000Z">
+          2019-12-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x867D;&#x7136;&#x662F;&#x51FA;&#x5728;Manjaro&#x4E0B;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x5404;&#x79CD;Linux&#x53D1;&#x884C;&#x7248;&#x4E2D;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x5728;Vim&#x4E0B;&#x53EF;&#x80FD;&#x4F1A;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x526A;&#x5207;&#x677F;&#xFF0C;&#x800C;&#x5728;Neovim&#x4E0B;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<code>+</code>&#x6216;&#x8005;<code>*</code>&#x5BC4;&#x5B58;&#x5668;&#x6765;&#x590D;&#x5236;&#x6216;&#x8005;&#x7C98;&#x8D34;&#x5185;&#x5BB9;&#x5230;&#x7CFB;&#x7EDF;&#x526A;&#x5207;&#x677F;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x67E5;&#x770B;Vim&#x662F;&#x5426;&#x652F;&#x6301;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x526A;&#x5207;&#x677F;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim --version | grep clipboard</span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x662F;&#x4E0D;&#x652F;&#x6301;&#x7684;</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-clipboard         +keymap            +printer           +vertsplit</span><br><span class="line">+emacs_tags        +mouse_gpm         -sun_workshop      -xterm_clipboard</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x7684;<code>clipboard</code>&#x548C;<code>xterm_clipboard</code>&#x663E;&#x793A;&#x4E3A;<code>-</code>&#xFF0C;&#x8BF4;&#x660E;&#x662F;&#x4E0D;&#x652F;&#x6301;&#x7684;</p>
+<p>&#x672C;&#x6587;&#x4E2D;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x4F1A;&#x53BB;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5E38;&#x7528;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x662F;Neovim&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x641E;&#x6E05;&#x695A;&#x4E3A;&#x4EC0;&#x4E48;Neovim&#x4E0D;&#x80FD;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x526A;&#x5207;&#x677F;&#x3002;&#x67E5;&#x770B;&#x5E2E;&#x52A9;&#x6587;&#x6863;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;Neovim&#x6709;&#x81EA;&#x4E3B;&#x9009;&#x62E9;&#x526A;&#x5207;&#x677F;&#x7684;&#x529F;&#x80FD;</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">==============================================================================</span><br><span class="line">Clipboard integration 			      *provider-clipboard* *clipboard*</span><br><span class="line"></span><br><span class="line">Nvim has no direct connection to the system clipboard. Instead it depends on</span><br><span class="line">a |provider| which transparently uses shell commands to communicate with the</span><br><span class="line">system clipboard or any other clipboard &quot;backend&quot;.</span><br></pre></td></tr></table></figure>
+<p>&#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;<code>g:clipboard</code>&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x5404;&#x79CD;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x526A;&#x5207;&#x5185;&#x5BB9;&#x3002;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x7684;&#x89E3;&#x51B3;&#x601D;&#x8DEF;&#x5C31;&#x6E05;&#x6670;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E0B;&#x9762;&#x4E24;&#x79CD;&#x53EF;&#x80FD;&#x6027;&#xFF1A;</p>
+<ol type="1">
+<li>Neovim&#x7684;&#x8BBE;&#x7F6E;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;<code>g:clipboard</code></li>
+<li>Neovim&#x4E2D;&#x5DF2;&#x7ECF;&#x8BBE;&#x7F6E;&#x4E86;&#x9ED8;&#x8BA4;&#x526A;&#x5207;&#x677F;&#xFF0C;&#x4F46;&#x662F;&#x7CFB;&#x7EDF;&#x6CA1;&#x5B89;&#x88C5;</li>
+</ol>
+<p>&#x5BF9;&#x4E8E;&#x7B2C;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#xFF0C;&#x6211;&#x4EEC;&#x5728;Ubuntu&#x4E0A;&#x5B89;&#x88C5;&#x7684;Neovim&#x662F;&#x5F00;&#x7BB1;&#x5373;&#x7528;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x526A;&#x5207;&#x677F;&#xFF0C;&#x6240;&#x4EE5;&#x5927;&#x6982;&#x7387;&#x53EF;&#x4EE5;&#x6392;&#x9664;&#x3002;&#x5BF9;&#x4E8E;&#x7B2C;&#x4E8C;&#x79CD;&#x53EF;&#x80FD;&#xFF0C;&#x901A;&#x8FC7;&#x4E00;&#x756A;&#x67E5;&#x627E;&#x53D1;&#x73B0;&#xFF0C;&#x5728;Ubuntu&#x4E2D;&#x4F1A;&#x9884;&#x88C5;&#x4E00;&#x4E2A;Xclip&#x5DE5;&#x5177;&#x7528;&#x4E8E;&#x7BA1;&#x7406;&#x526A;&#x5207;&#x677F;&#xFF0C;&#x7531;&#x4E8E;&#x7CFB;&#x7EDF;&#x7684;&#x56FE;&#x5F62;&#x7BA1;&#x7406;&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x4E86;X11&#xFF0C;&#x76F4;&#x89C9;&#x544A;&#x8BC9;&#x6211;&#x8FD9;&#x4E2A;&#x53EF;&#x80FD;&#x5C31;&#x662F;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x5173;&#x952E;&#x3002;&#x62B1;&#x7740;&#x8BD5;&#x4E00;&#x8BD5;&#x7684;&#x6001;&#x5EA6;&#xFF0C;&#x5728;Manjaro&#x4E0B;&#x5B89;&#x88C5;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S xclip</span><br></pre></td></tr></table></figure>
+<p>&#x53E6;&#x5916;&#x5F00;&#x4E00;&#x4E2A;Neovim&#xFF0C;&#x7528;<code>&quot;+y</code>&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x7C98;&#x8D34;&#x4E86;&#x3002;</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Manjaro/">Manjaro</a><a href="/tags/Neovim/">Neovim</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <!-- <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 玩味者
+    
+  </p> -->
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
