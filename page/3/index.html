@@ -57,6 +57,60 @@
 
   
     
+    <h3 class="article-title"><a href="/2018/02/23/在Linux-Deploy下的Ubuntu安装MySql的坑/"><span>在Linux Deploy下的Ubuntu安装MySql的坑</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/02/23/在Linux-Deploy下的Ubuntu安装MySql的坑/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-02-23T14:55:02.000Z">
+          2018-02-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>这几天在自己的一个旧的安卓手机上用Linux Deploy装了一个Ubuntu，装各种软件都很方便，也可以满足日常开发的各种需要了。可偏偏在装MySql的时候，死活没办法启动：</p>
+<figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">root@localhost:/home/android# mysql</span><br><span class="line"><span class="keyword">ERROR </span>2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)</span><br></pre></td></tr></table></figure>
+        
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Linux/">Linux</a><a href="/tags/Debug/">Debug</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2018/02/13/仿3Blue1Brown关于傅里叶变换的一种观点/"><span>仿3Blue1Brown关于傅里叶变换的一种观点</span></a></h3>
     
   
@@ -535,60 +589,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/Python/">Python</a><a href="/tags/数学/">数学</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/05/28/分数类/"><span>分数类</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/05/28/分数类/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-05-27T16:00:00.000Z">
-          2017-05-28
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>在分数类的构造的时候，可以采用“分子-分母”分别存储的方式。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ration</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, top = <span class="number">0</span>, bottom = <span class="number">1</span>)</span>:</span></span><br><span class="line">        self.top = top</span><br><span class="line">        self.bottom = bottom</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">disp</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> float(self.top) / self.bottom</span><br></pre></td></tr></table></figure>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/Python/">Python</a><a href="/tags/计算机科学/">计算机科学</a>
     </span>
     
 
